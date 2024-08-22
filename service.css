@@ -1,0 +1,223 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title-section {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #080808;
+  }
+  
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+    margin: 10px auto;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 15px;
+  }
+  
+  .col-lg-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+  
+  .card-pricing {
+    background-color: red;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.849);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .col-lg-auto:nth-child(3) .card-pricing,
+  .col-lg-auto:nth-child(4) .card-pricing {
+    background-color: #fccf06;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.849);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+  } 
+  .col-lg-auto:nth-child(1) .card-pricing {
+    background-color: #0804ff;
+    color: #080808;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.849);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+  } 
+  .card-pricing:hover {
+    transform: translateY(-10px);
+  }
+  
+  .header {
+    padding: 20px;
+    color: #fff;
+    background-color: #007bff; /* Default header color */
+  }
+  
+  .header .price-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* Specific styling for MTN and AFA Registration headers */
+  .col-lg-auto:nth-child(3) .header,
+  .col-lg-auto:nth-child(4) .header {
+    background-color: #000;
+  }
+  .col-lg-auto:nth-child(1) .header {
+    background-color: red;
+  }
+  .price-icon img {
+    width: 100px;
+    margin: 0 auto;
+  }
+  
+  .price-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .body {
+    padding: 20px;
+  }
+  
+  .price-tag {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f5f1f1;
+    margin-bottom: 10px;
+  }
+  
+  .price-info {
+    font-size: 1em;
+    color: #f5efef;
+  }
+  
+  .footer {
+    padding: 20px;
+    width: 100%;
+    background-color: #070000;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: red;
+    border: 1px solid #070707;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: red;
+    color: #fff;
+  }
+  .col-lg-auto:nth-child(3) .btn,
+  .col-lg-auto:nth-child(4) .btn {
+    color: black;
+    background-color: rgb(255, 174, 0);
+  }
+  .col-lg-auto:nth-child(3) .btn:hover,
+  .col-lg-auto:nth-child(4) .btn:hover {
+    color: black;
+    background-color: #fcf805;
+  }
+  .col-lg-auto:nth-child(1) .btn {
+    color: rgb(250, 249, 247);
+    background-color: #f50404;
+  }
+  .col-lg-auto:nth-child(1) .p {
+    color: rgb(15, 12, 1);
+  }
+  .col-lg-auto:nth-child(1) .btn:hover {
+    color: rgb(248, 6, 6);
+    background-color: rgb(239, 239, 243);
+  }
+  /* Animations */
+  .wow {
+    visibility: hidden;
+  }
+  
+  .fadeInLeft {
+    animation-name: fadeInLeft;
+  }
+  
+  .fadeInUp {
+    animation-name: fadeInUp;
+  }
+  
+  @keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  /* Adding animation delays for staggered effect */
+  .col-lg-auto:nth-child(1) .wow {
+    animation-delay: 0.1s;
+  }
+  
+  .col-lg-auto:nth-child(2) .wow {
+    animation-delay: 0.3s;
+  }
+  
+  .col-lg-auto:nth-child(3) .wow {
+    animation-delay: 0.5s;
+  }
+  
+  .col-lg-auto:nth-child(4) .wow {
+    animation-delay: 0.7s;
+  }
+  
+  .wow {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    visibility: visible;
+  }
+  

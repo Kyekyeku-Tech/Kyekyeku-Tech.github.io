@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kyekyeku-tech.com</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/30c032ee516d51ceb456a.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url('https://telegra.ph/file/ddf9087dae1e826d8b986.jpg');
+        }
+        .form-container {
+            max-width: 600px;
+            background-color: #16a0b9;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #0f0101;
+            border-radius: 10px;
+            position: relative;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .form-container input, .form-container select, .form-container button {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #0a0000;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background-color: black;
+            color: #ffd000;
+            border: none;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #0905f7;
+            color: white;
+        }
+        .form-container img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Instant Flyer Generator</h2>
+        <form id="flyerForm">
+            <img src="https://d1csarkz8obe9u.cloudfront.net/embeddesigns/59c8c93c42d4061188496b56aa105014_embed.jpg" alt="flyer image"/>
+            <label for="flyerTitle">Your Company Name:</label>
+            <input type="text" id="flyerTitle" name="flyerTitle" placeholder="KYEKYEKU-TECH OFFERS" required>
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g., 0241234567" required>
+            <label for="pricelist">Select Pricelist:</label>
+            <select id="pricelist" name="pricelist" required>
+                <option value="mtn">MTN Flyer</option>
+                <option value="tigo">AirtelTigo</option>
+            </select>
+            <button type="submit">Generate Flyer</button>
+        </form>
+    </div>
+
+    <script>
+        const mtnPricelist = {
+            "1": 6.5,
+            "2": 12,
+            "3": 18,
+            "4": 24,
+            "5": 28,
+            "6": 34,
+            "8": 43,
+            "10": 53,
+            "12": 63,
+            "15": 70,
+            "20": 100,
+            "25": 118,
+            "30": 130,
+            "40": 178,
+            "50": 190,
+            "100": 360,
+        };
+
+        const tigoPricelist = {
+            "1": 5,
+            "2": 10,
+            "3": 15,
+            "4": 19,
+            "5": 22,
+            "6": 25,
+            "7": 28,
+            "8": 32,
+            "10": 37,
+            "15": 50,
+            "20": 67,
+            "25": 81,
+            "30": 96,
+            "50": 155,
+            "100": 310 
+        };
+
+        document.getElementById('flyerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const flyerTitle = document.getElementById('flyerTitle').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const pricelistSelection = document.getElementById('pricelist').value;
+            const pricelist = pricelistSelection === 'mtn' ? mtnPricelist : tigoPricelist;
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            let primaryColor, secondaryColor, titleColor, textColor;
+            if (pricelistSelection === 'mtn') {
+                primaryColor = [255, 208, 0]; // MTN Yellow
+                secondaryColor = [0, 0, 0]; // Black
+                textColor = [0, 0, 0]; // Black
+                titleColor = [255, 0, 0]; // Red
+            } else {
+                primaryColor = [0, 0, 255]; // Tigo Blue
+                secondaryColor = [255, 255, 255]; // White
+                textColor = [0, 0, 0]; // Black
+                titleColor = [255, 0, 0]; // Red
+            }
+
+            doc.setFillColor(...primaryColor);
+            doc.rect(0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height, 'F');
+
+            doc.setTextColor(...titleColor);
+            doc.setFontSize(25);
+            doc.text(flyerTitle, 20, 20);
+
+            doc.setTextColor(...textColor);
+            doc.setFontSize(12);
+            doc.text(`Phone Number: ${phoneNumber}`, 20, 30);
+
+            doc.setTextColor(...textColor);
+            doc.setFontSize(12);
+            doc.text('Price List:', 20, 40);
+
+            const tableData = [];
+            for (const [size, price] of Object.entries(pricelist)) {
+                tableData.push([`${size}GB`, `GHS ${price.toFixed(2)}`]);
+            }
+
+            doc.autoTable({
+                startY: 50,
+                head: [['Data Plan', 'Price']],
+                body: tableData,
+                useCss: false,
+                styles: {
+                    fillColor: [...primaryColor],
+                    textColor: [...textColor],
+                },
+                headStyles: {
+                    fillColor: [...secondaryColor],
+                    textColor: [...primaryColor],
+                }
+            });
+
+            doc.save(`${flyerTitle}.pdf`);
+        });
+    </script>
+<!-- Static App Form Collection Script -->
+<script src="https://static.app/js/static-forms.js" type="text/javascript"></script>
+
+
+</body>
+</html>
