@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyekyeku-tech.com</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>kyekyeku-tech.site</title>
+    <link rel="stylesheet" href="service.css">
+    <link rel="stylesheet" href="kye.css">
     <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/30c032ee516d51ceb456a.jpg">
 <style>
     body {
@@ -14,10 +18,47 @@
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     min-height: 100vh;
 }
+
+.form-container {
+    background-color: rgba(7, 133, 236, 0.548);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(36, 29, 0);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    margin: auto; /* Center the form horizontally */
+    flex: 1; /* Make sure the form container takes up available space */
+}
+
+footer {
+    background-color: #00000a;
+    padding: 20px;
+    text-align: center;
+    color: #f5f4f3;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    padding: 0;
+    color: #f8f7f2;
+}
+
+
+
+
+.whatsapp-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
 .form-container {
     background-color: rgba(7, 133, 236, 0.548);
     padding: 20px;
@@ -73,22 +114,11 @@ border-radius: 5px;
 border: 1px solid #f1f1ee;
 text-align: center; /* Center text */
 }
-.btm {
-background-color: #0616ec;
-color: #fcc307;
-border: none;
-cursor: pointer;
-text-decoration: none; /* Remove underline from link */
-display: inline-block; /* Make link behave like a button */
-}
-.btm:hover {
-color: #ccc;
-background-color: #0ed107ce;
-}
+
 .form-container img {
             width: 100%;
             max-width: 200px;
-            height: auto;
+            height: 50%;
             display: block;
             margin: auto;
         }
@@ -188,3 +218,18 @@ document.querySelector('.menu-toggle').addEventListener('click', function() {
     this.classList.toggle('active');
 });
 </script>
+<footer>
+    <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fas fa-envelope"></i></a>
+    </div>
+    <p>&copy; 2024 Kyekyeku-Tech. All rights reserved.</p><a href="T&Cs.html" class="btm">Terms and Conditions</a></p>
+</div>
+</footer>
+<div class="whatsapp-widget" onclick="window.location.href='https://wa.me/+233545454000'">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</div>

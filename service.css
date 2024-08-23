@@ -120,12 +120,6 @@ body {
     color: #f5efef;
   }
   
-  .footer {
-    padding: 20px;
-    width: 100%;
-    background-color: #070000;
-  }
-  
   .btn {
     display: inline-block;
     padding: 10px 20px;
@@ -220,4 +214,67 @@ body {
     animation-fill-mode: both;
     visibility: visible;
   }
+  .whatsapp-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: transparent;
+    color: rgb(247, 244, 244);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.whatsapp-widget img {
+    width: 35px;
+    height: 35px;
+}
+
+.whatsapp-widget:hover {
+    transform: scale(1.2);
+}
+.btm {
+  color: #f82905;
   
+}
+.btm:hover {
+  color: white;
+  background-color: red;
+}
+      
+      .footer {
+          padding: 20px;
+          width: 100%;
+          background-color: transparent;
+      }
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 0px;
+        text-align: center;
+        position: flex;
+        bottom: 0;
+        width: 100%;
+      }
+      .btm {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 1em;
+          font-weight: bold;
+          color: red;
+          border: 1px solid #070707;
+          border-radius: 50px;
+          text-decoration: none;
+          transition: background-color 0.3s, color 0.3s;
+      }
+
+      .btm:hover {
+          background-color: red;
+          color: #fff;
+      }
