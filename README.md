@@ -18,10 +18,15 @@
 
 
 <p align="center">
-  <a href="https://Wa.me/+233545454000">
-    <img alt="kyekyeku-logo" height="300" src="https://telegra.ph/file/7bc2c08d3b722da63e2b6.jpg">
-  </a>
-</p>
+   <section id="about" style="padding: 50px 20px; background-color: black;">
+        <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+            <img src="https://telegra.ph/file/7bc2c08d3b722da63e2b6.jpg" alt="Kyekyeku-Tech" style="width: 150px; height: 150px; border-radius: 50%; margin-bottom: 20px;">
+            <h2 style="font-size: 36px; color: #333;">About Me</h2>
+            <p style="font-size: 18px; color: #666; margin-top: 20px;">
+                I am Kyekyeku-Tech, a professional website developer passionate about creating high-quality, user-friendly websites. I am the creator of websites like <a href="https://thenelsonfoundation.site" style="color: #007bff;">thenelsonfoundation.site</a>, <a href="https://kyekyeku-tech.site" style="color: #007bff;">kyekyeku-tech.com</a>, and <a href="http://www.kyekyeku-tech.site" style="color: #007bff;">kyekyeku-tech.site</a>. In addition to web development, I sell <a href="https://kyekyeku-tech.site/home" style="color: #007bff;">internet Bundles</a>,across all networks in Ghana, including Telecel, MTN, and Vodafone, as well as <a href="https://kyekyeku-tech.site/wifi" style="color: #007bff;">Wifi devices</a>,to ensure you stay connected. My mission is to provide reliable and affordable digital solutions tailored to meet your needs.
+            </p>
+        </div>
+    </section>
     
    
    
