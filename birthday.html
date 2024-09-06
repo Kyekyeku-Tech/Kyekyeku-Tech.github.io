@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Countdown</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .profile-picture {
+            border-radius: 50%;
+            width: 150px; /* Adjust size as needed */
+            height: 150px; /* Adjust size as needed */
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .countdown-container {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .countdown-item {
+            background: #fff;
+            padding: 0.7rem 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown-number {
+            display: block;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .wish-button {
+            background-color: #25D366; /* WhatsApp green */
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .wish-button:hover {
+            background-color: #1EBE4F; /* Darker green on hover */
+        }
+
+        .birthday-wish {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .birthday-wish h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .birthday-wish p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://i.postimg.cc/qRxjQ9sp/kye-enhanced.jpg" alt="Profile Picture" class="profile-picture">
+    <h2>kyekyeku-Tech Birthday</h2>
+    <div class="countdown-container">
+        <div id="countdown">
+            <div class="countdown-item">
+                <span id="days" class="countdown-number">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span id="hours" class="countdown-number">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes" class="countdown-number">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds" class="countdown-number">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+    </div>
+    <div class="birthday-wish">
+        <h3>Thank You for Celebrating with Me!</h3>
+        <p>As my special day approaches, I wanted to take a moment to thank you for being a part of my life. Your presence and warm wishes make this day even more memorable. I’m looking forward to celebrating with you!</p>
+    </div>
+    <a href="https://wa.me/+233545454000?text=Hello%20Boss%20Happy%20Birthday%20to%20you%20have%20a%20blessful%20birthday" class="wish-button" target="_blank">Send Birthday Wish</a>
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const targetDate = new Date(now.getFullYear(), 8, 24); // 24th September (months are 0-indexed)
+            
+            if (now > targetDate) {
+                targetDate.setFullYear(targetDate.getFullYear() + 1); // If the date has passed this year, set to next year
+            }
+
+            const timeDifference = targetDate - now;
+
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call to populate values immediately
+    </script>
+</body>
+</html>
