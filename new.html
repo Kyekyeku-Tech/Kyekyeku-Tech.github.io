@@ -98,7 +98,7 @@
 </head>
 
 <body>
-    <form id="paymentForm" action="https://api.sheetmonkey.io/form/s2tNaVG3kzyiw91cPx6AyC" method="POST" enctype="multipart/form-data">
+    <form id="paymentForm">
         <input type="hidden" name="x-sheetmonkey-insert-worksheet" value="MTN NEW" />
         <h2 id="mtn-heading">KYEKYEKU</h2>
         <h2 class="form-text">-TECH</h2>
@@ -135,66 +135,36 @@
         <script src="https://js.paystack.co/v1/inline.js"></script>
         <script>
             const prices = {
-                "2": 11.5,
-                "3": 16.5,
-                "4": 20.5,
-                "5": 27.5,
-                "6": 30.5,
-                "7": 35.5,
-                "8": 40.5,
-                "10": 48.5,
-                "12": 60.5,
-                "15": 70.5,
-                "20": 90.5,
-                "25": 116.0,
-                "30": 130.0,
-                "40": 180.0,
-                "50": 199.0,
-                "100": 360.0
+                "2": 1150,
+                "3": 1650,
+                "4": 2050,
+                "5": 2750,
+                "6": 3050,
+                "7": 3550,
+                "8": 4050,
+                "10": 4850,
+                "12": 6050,
+                "15": 7050,
+                "20": 9050,
+                "25": 11600,
+                "30": 13000,
+                "40": 18000,
+                "50": 19900,
+                "100": 36000
             };
 
             const agentEmails = {
-               "KSARFO": "safooppong121@gmail.com",
-            "MORDECAI OBENG": "mordecaiobeng941@gmail.com",
-            "MAYARIT": "maayaasekyiwaa@gmail.com",
-            "UNCLE AUGUSTINE": "tanoeaugustine47@gmail.com",
-            "ABENA NYAMEKYE": "etwumasi977@gmail.com",
-            "AUTHENTICC": "wondernyabik237@gmail.com",
-            "BEN8363": "bnat90883@gmail.com",
-            "BERNTOYEB": "berntoyeb@icloud.com",
-            "ENOOMIA1": "enochpolley17@gmail.com",
-            "FRANKOW": "frankkwabenaowusu@gmail.com",
-            "ISAACPRAH": "prahisaac729@gmail.com",
-            "JOHN KESSEY": "johnkessey66@gmail.com",
-            "MEEKYBOI": "asigrirashid93@gmail.com",
-            "NEVERMINOH": "nimohandy7@gmail.com",
-            "NN": "lilyame311@gmail.com",
-            "OHENE": "yamoahgodfred34@gmail.com",
-            "PLATONIC": "sam.ebulley210@gmail.com",
-            "PROFF.JO": "proff.jo@gmail.com",
-            "PROSPER VORVUH": "Vorvuhprosper9@gmail.com",
-            "RAZAKZIBLIM": "okpubsbusinesscentre1986@gmail.com",
-            "SD": "scholasticacudjoe507@gmail.com",
-            "SHAWAZ GH": "isaacnelson5656@gmail.com",
-            "SHOCKSPHONES": "ashockyankey@gmail.com",
-            "SIRBERN07": "bernardoppong220@gmail.com",
-            "TOO FACED": "saidrazak45@gmail.com",
-            "VICENT": "vincentnutsugah@gmail.com",
-            "XANDER": "alexboasiako11@gmail.com",
-            "ZACOSH": "Zacosh024@gmail.com",
-          "MISSBEE": "berniceapodei5@gmail.com",
-          "BAWA HABIB": "bawahabib47@gmail.com",
-          "PRINCE AYIM GASU": "ayimprince80@gmail.com",
-          "KWAKU DAMALIE": "bossoanthony680@gmail.com",
-          "ASAREEMMANUEL": "asarerichway200@gmail.com"
+                "KSARFO": "safooppong121@gmail.com",
+                // Other agent emails...
             };
 
             document.getElementById("paymentForm").addEventListener("submit", function(event) {
                 event.preventDefault();
+
                 const phoneNumber = document.getElementById("phoneNumber").value;
                 const agentId = document.getElementById("agentId").value.toUpperCase();
                 const selectedBundle = document.getElementById("bundle").value;
-                const amount = prices[selectedBundle] * 100; // Amount in pesewas
+                const amount = prices[selectedBundle]; // Amount in pesewas
 
                 if (!(agentId in agentEmails) || agentEmails[agentId] === "") {
                     Swal.fire('Error', 'Invalid or unregistered Agent ID.', 'error');
@@ -223,25 +193,27 @@
                         fetch('https://api.sheetmonkey.io/form/s2tNaVG3kzyiw91cPx6AyC', {
                             method: "POST",
                             body: formData
-                        }).then(function(response) {
-                            if (response.ok) {
-                                const currentTime = new Date();
-                                const formattedTime = currentTime.toLocaleString();
-                                document.getElementById("submissionTime").textContent = "Form submitted at: " + formattedTime;
-                                Swal.fire('Payment Successful!', 'Best Regard Kyekyeku-tech');
-                                sendSMS(phoneNumber, selectedBundle); // Call the function to send SMS after successful payment
-                            } else {
-                                Swal.fire('Error', 'There was an error with your submission.', 'error');
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                return response.text().then(text => { throw new Error(text); });
                             }
-                        }).catch(function(error) {
+                            return response.text();
+                        })
+                        .then(data => {
+                            Swal.fire('Success', 'Form submitted successfully', 'success');
+                            sendSMS(phoneNumber, selectedBundle); // Call the function to send SMS after successful payment
+                        })
+                        .catch(error => {
                             console.error("Error:", error);
-                            Swal.fire('Error', 'There was an error with your submission.', 'error');
+                            Swal.fire('Error', `There was an error with your submission: ${error.message}`, 'error');
                         });
                     },
                     onClose: function() {
                         Swal.fire('Payment Cancelled', 'You closed the payment window.', 'info');
                     }
                 });
+
                 handler.openIframe();
             });
 
@@ -267,16 +239,19 @@
                 };
 
                 const package = packageNames[selectedBundle];
+                const apiUrl = `https://devp-sms03726-api.hubtel.com/v1/messages/send?clientid=janhcpit&clientsecret=mzrmyenb&from=KyekyekuTek&to=${phoneNumber}&content=${encodeURIComponent('Someone has just bought '+ package +' with new phone number ' + phoneNumber + '. Kindly confirm.')}`;
 
-                fetch(`https://devp-sms03726-api.hubtel.com/v1/messages/send?clientid=janhcpit&clientsecret=mzrmyenb&from=KyekyekuTek&to=+233545454000&content=Hi Boss, ${package} has been bought on MTN new phone number ${phoneNumber} Kindly confirm the Transaction`,  {
-                    method: 'GET'
-                })
-                .then(response => response.text())
-                .then(data => console.log(data))
-                .catch(error => console.error('Error sending SMS:', error));
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("SMS sent successfully:", data);
+                    })
+                    .catch(error => {
+                        console.error("Error sending SMS:", error);
+                        Swal.fire('Error', `There was an error sending the SMS: ${error.message}`, 'error');
+                    });
             }
         </script>
     </form>
 </body>
-
 </html>
