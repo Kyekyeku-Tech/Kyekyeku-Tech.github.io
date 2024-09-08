@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kyekyeku-tech.com</title>
+    <title>kyekyeku-tech.com</title>
     <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/30c032ee516d51ceb456a.jpg">
     <style>
         body {
@@ -18,7 +18,7 @@
             align-items: center;
             min-height: 100vh;
         }
-        #registrationForm {
+        #AfaRegistration {
             background-color: rgba(22, 1, 1, 0.582);
             padding: 20px;
             border-radius: 10px;
@@ -27,7 +27,7 @@
             width: 100%;
             text-align: center;
         }
-        h2 {
+        h4 {
             font-weight: bold;
             color: yellow;
         }
@@ -67,31 +67,30 @@
     </style>
 </head>
 <body>
-    <form id="registrationForm" netlify>
-    <div class="form-container">
-        <h2>Registration Form</h2>
+    <form id="AfaRegistration">
+        <input type="hidden" name="x-sheetmonkey-insert-worksheet" value="AFA REGISTRATION" />
         <p>AFA Registration is GHC 10.00</p>
-            <input type="text" id="Recipient_Name" name="Recipient_Name" placeholder="Customer Name" required>
-            <input type="tel" id="Phone_Number" name="Phone_Number" placeholder="Phone Number" required>
-            <input type="text" id="ID_Number" name="ID_Number" placeholder="Ghana Card ID Number" required>
-            <input type="text" id="Occupation" name="Occupation" placeholder="Occupation" required>
-            <label for="DOB">Date of Birth:</label>
-            <input type="date" id="Date_of_Birth" name="Date_of_Birth" required><br>
-            <input type="submit" value="BUY HERE"><br><br>
-        </form>
-    </div>
-
+        <input type="text" id="Recipient_Name" name="Recipient_Name" placeholder="Customer Name" required>
+        <input type="tel" id="Phone_Number" name="Phone_Number" placeholder="Phone Number" required>
+        <input type="text" id="ID_Number" name="ID_Number" placeholder="Ghana Card ID Number" required>
+        <input type="text" id="Occupation" name="Occupation" placeholder="Occupation" required>
+        <label for="DOB">Date of Birth:</label>
+        <input type="date" id="Date_of_Birth" name="Date_of_Birth" required><br>
+        <input type="submit" value="Submit">
+    </form>
+    <p id="submissionTime"></p>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script> 
     <script>
-        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        
+        document.getElementById("AfaRegistration").addEventListener("submit", function(event) {
             event.preventDefault();
             var phoneNumber = document.getElementById("Phone_Number").value;
             var amount = 10 * 100; // Amount in kobo
 
             var handler = PaystackPop.setup({
                 key: 'pk_live_fb405d2702a00868ba424f73b9148b7aad07b2b0', // Replace with your public key
-                email: 'ceo@kyekyeku-tech.site',
+                email: 'kyekyekutech@zohomail.com',
                 amount: amount,
                 currency: 'GHS',
                 ref: 'KYEKYEKU-' + Math.floor((Math.random() * 1000000000) + 1),
@@ -103,19 +102,47 @@
                     }]
                 },
                 callback: function(response) {
+                    // Capture the current time
+                    var currentTime = new Date();
+                    var formattedTime = currentTime.toLocaleString();
+
+                    // Display the submission time
+                    document.getElementById("submissionTime").textContent = "Form submitted at: " + formattedTime;
+
                     // Display success message
-                    Swal.fire('Payment Successful!', 'Wait for form to be submitted before you leave.');
+                    Swal.fire('Payment Successful!', 'Wait for form to be submitted before you leave.', 'success');
+
+                    // Prepare form data
+                    var formData = new FormData(document.getElementById("AfaRegistration"));
 
                     // Trigger form submission
-                    document.getElementById("registrationForm").submit();
+                    fetch('https://api.sheetmonkey.io/form/s2tNaVG3kzyiw91cPx6AyC', {
+                        method: "POST",
+                        body: formData
+                    }).then(function(response) {
+                        if (response.ok) {
+                            // Show the success alert
+                            Swal.fire({
+                                position: "center",
+                                icon: "success",
+                                title: "Your data has been saved, Thank you",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
 
-                    // Send SMS notification
-                    fetch(`https://devp-sms03726-api.hubtel.com/v1/messages/send?clientid=janhcpit&clientsecret=mzrmyenb&from=KyekyekuTek&to=+233545454000&content=Someone has Just Registered AFA On ${phoneNumber}. Kindly confirm.`, {
-                        method: 'GET'
-                    })
-                    .then(response => response.text())
-                    .then(data => console.log(data))
-                    .catch(error => console.error('Error sending SMS:', error));
+                            // Send SMS notification
+                            fetch(`https://devp-sms03726-api.hubtel.com/v1/messages/send?clientid=janhcpit&clientsecret=mzrmyenb&from=KyekyekuTek&to=+233545454000&content=Someone has Just Registered AFA On ${phoneNumber}. Kindly confirm.`, {
+                                method: 'GET'
+                            })
+                            .then(response => response.text())
+                            .then(data => console.log(data))
+                            .catch(error => console.error('Error sending SMS:', error));
+                        } else {
+                            Swal.fire('Error', 'There was an issue saving your data.', 'error');
+                        }
+                    }).catch(function(error) {
+                        Swal.fire('Error', 'There was an issue with the submission.', 'error');
+                    });
                 },
                 onClose: function() {
                     Swal.fire('Payment Cancelled', 'You closed the payment window.', 'info');
@@ -124,9 +151,5 @@
             handler.openIframe();
         });
     </script>
-<!-- netlify App Form Collection Script -->
-<script src="https://netlify.app/js/netlify-forms.js" type="text/javascript"></script>
-
-
 </body>
 </html>

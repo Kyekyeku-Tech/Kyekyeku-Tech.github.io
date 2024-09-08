@@ -128,7 +128,8 @@ text-align: center; /* Center text */
 <div class="form-container">
     <h2>Premium Flyer Request</h2>
     <p>Ultra Modern Flyer Design is GHC 7.00</p>
-    <form id="flyerForm" enctype="multipart/form-data" netlify>
+    <form id="flyerForm" enctype="multipart/form-data">
+        <input type="hidden" name="x-sheetmonkey-insert-worksheet" value="FLYER" />
         <img src="https://d1csarkz8obe9u.cloudfront.net/embeddesigns/59c8c93c42d4061188496b56aa105014_embed.jpg" alt="flyer image"/>
         <input type="text" id="Recipient_Name" name="Recipient_Name" placeholder="Your Company Name" required>
         <input type="tel" id="Phone_Number" name="Phone_Number" placeholder="Your Payment Number" required>
@@ -166,7 +167,7 @@ document.getElementById('flyerForm').addEventListener('submit', function(event) 
             var form = event.target;
             var formData = new FormData(form);
 
-            fetch('', {
+            fetch('https://api.sheetmonkey.io/form/s2tNaVG3kzyiw91cPx6AyC', {
                 method: "POST",
                 body: formData
             }).then(function(response) {
