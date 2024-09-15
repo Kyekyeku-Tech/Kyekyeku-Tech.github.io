@@ -162,41 +162,43 @@
     
     <script>
         function updateCountdown() {
-            const now = new Date();
-            const targetDate = new Date(now.getFullYear(), 8, 24); // 24th September
+        const now = new Date();
+        const targetDate = new Date(now.getFullYear(), 8, 24); // 24th September
 
-            // Reset to next year if the birthday is over
-            if (now > targetDate) {
-                targetDate.setFullYear(targetDate.getFullYear() + 1);
-            }
-
-            const timeDifference = targetDate - now;
-            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = days.toString().padStart(2, '0');
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-            // Show birthday message and animation if it's the birthday
-            const birthdayMessage = document.getElementById('birthdayMessage');
-            const birthdayAnimation = document.getElementById('birthdayAnimation');
-
-            const isBirthday = now.getMonth() === 8 && now.getDate() === 24;
-            if (isBirthday && hours < 24) {
-                birthdayMessage.classList.add('visible');
-                birthdayAnimation.classList.add('visible');
-            } else {
-                birthdayMessage.classList.remove('visible');
-                birthdayAnimation.classList.remove('visible');
-            }
+        // Reset to next year if the birthday is over
+        if (now > targetDate) {
+            targetDate.setFullYear(targetDate.getFullYear() + 1);
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // Initial call to populate values immediately
+        const timeDifference = targetDate - now;
+        const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+        // Show birthday message and animation only on 24th September from 12:00 AM to 11:59 PM
+        const birthdayMessage = document.getElementById('birthdayMessage');
+        const birthdayAnimation = document.getElementById('birthdayAnimation');
+
+        const isBirthday = now.getMonth() === 8 && now.getDate() === 24;
+        const isWithinBirthdayHours = now.getHours() >= 0 && now.getHours() < 24;
+
+        if (isBirthday && isWithinBirthdayHours) {
+            birthdayMessage.classList.add('visible');
+            birthdayAnimation.classList.add('visible');
+        } else {
+            birthdayMessage.classList.remove('visible');
+            birthdayAnimation.classList.remove('visible');
+        }
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); 
     </script>
 </body>
 </html>
