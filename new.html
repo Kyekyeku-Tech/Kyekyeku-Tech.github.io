@@ -112,10 +112,11 @@
         <label for="bundle">SELECT PACKAGE:</label>
         <select id="bundle" name="BUNDLE">
             <option value="0">0GB - GHS0.0</option>
-            <option value="2">2GB - GHS11.0</option>
-            <option value="3">3GB - GHS16.0</option>
+            <option value="1">1GB - GHS5.0</option>
+            <option value="2">2GB - GHS10.0</option>
+            <option value="3">3GB - GHS15.0</option>
             <option value="4">4GB - GHS20.0</option>
-            <option value="5">5GB - GHS27.0</option>
+            <option value="5">5GB - GHS25.0</option>
             <option value="6">6GB - GHS30.0</option>
             <option value="7">7GB - GHS35.0</option>
             <option value="8">8GB - GHS40.0</option>
@@ -135,10 +136,11 @@
         <script src="https://js.paystack.co/v1/inline.js"></script>
         <script>
             const prices = {
-                "2": 1150,
-                "3": 1650,
+                "1": 550,
+                "2": 1050,
+                "3": 1550,
                 "4": 2050,
-                "5": 2750,
+                "5": 2550,
                 "6": 3050,
                 "7": 3550,
                 "8": 4050,
@@ -153,136 +155,176 @@
                 "100": 36000
             };
 
-            const agentEmails = {
-            "KSARFO": "safooppong121@gmail.com",
-            "MORDECAI OBENG": "mordecaiobeng941@gmail.com",
-            "MAYARIT": "maayaasekyiwaa@gmail.com",
-            "UNCLE AUGUSTINE": "tanoeaugustine47@gmail.com",
-            "ABENA NYAMEKYE": "etwumasi977@gmail.com",
-            "AUTHENTICC": "wondernyabik237@gmail.com",
-            "BEN8363": "bnat90883@gmail.com",
-            "BERNTOYEB": "berntoyeb@icloud.com",
-            "ENOOMIA1": "enochpolley17@gmail.com",
-            "FRANKOW": "frankkwabenaowusu@gmail.com",
-            "ISAACPRAH": "prahisaac729@gmail.com",
-            "JOHN KESSEY": "johnkessey66@gmail.com",
-            "MEEKYBOI": "asigrirashid93@gmail.com",
-            "NEVERMINOH": "nimohandy7@gmail.com",
-            "NN": "lilyame311@gmail.com",
-            "OHENE": "yamoahgodfred34@gmail.com",
-            "PLATONIC": "sam.ebulley210@gmail.com",
-            "PROFF.JO": "proff.jo@gmail.com",
-            "PROSPER VORVUH": "Vorvuhprosper9@gmail.com",
-            "RAZAKZIBLIM": "okpubsbusinesscentre1986@gmail.com",
-            "SD": "scholasticacudjoe507@gmail.com",
-            "SHAWAZ GH": "isaacnelson5656@gmail.com",
-            "SHOCKSPHONES": "ashockyankey@gmail.com",
-            "SIRBERN07": "bernardoppong220@gmail.com",
-            "TOO FACED": "saidrazak45@gmail.com",
-            "VICENT": "vincentnutsugah@gmail.com",
-            "XANDER": "alexboasiako11@gmail.com",
-            "ZACOSH": "Zacosh024@gmail.com",
-          "MISSBEE": "berniceapodei5@gmail.com",
-          "BAWA HABIB": "bawahabib47@gmail.com",
-          "PRINCE AYIM GASU": "ayimprince80@gmail.com",
-          "KWAKU DAMALIE": "bossoanthony680@gmail.com",
-          "ASAREEMMANUEL": "asarerichway200@gmail.com"
-            };
+    const agents = {
+        "KSARFO": { email: "safooppong121@gmail.com", phone: "233540612264" },
+        "MORDECAI OBENG": { email: "mordecaiobeng941@gmail.com", phone: "233534672645" },
+        "DANQUAHDEE": { email: "Dannyatmarket@gmail.com", phone: "233244348440" },
+        "UNCLE AUGUSTINE": { email: "tanoeaugustine47@gmail.com", phone: "233541061780" },
+        "ABENA NYAMEKYE": { email: "etwumasi977@gmail.com", phone: "233243781794" },
+        "AUTHENTICC": { email: "wondernyabik237@gmail.com", phone: "233242921311" },
+        "BEN8363": { email: "bnat90883@gmail.com", phone: "233249358363" },
+        "BERNTOYEB": { email: "berntoyeb@icloud.com", phone: "233249456560" },
+        "ENOOMIA1": { email: "enochpolley17@gmail.com", phone: "233550123456" },
+        "FRANKOW": { email: "frankkwabenaowusu@gmail.com", phone: "233557540234" },
+        "GODBLESSED": { email: "prahisaac729@gmail.com", phone: "233241726125" },
+        "JOHN KESSEY": { email: "johnkessey66@gmail.com", phone: "233594975203" },
+        "MEEKYBOI": { email: "asigrirashid93@gmail.com", phone: "233240284221" },
+        "NEVERMINOH": { email: "nimohandy7@gmail.com", phone: "233256350716" },
+        "NN": { email: "lilyame311@gmail.com", phone: "233594668874" },
+        "OHENE": { email: "yamoahgodfred34@gmail.com", phone: "233548785316" },
+        "PLATONIC": { email: "sam.ebulley210@gmail.com", phone: "233242540100" },
+        "PROFF.JO": { email: "proff.jo@gmail.com", phone: "233245883222" },
+        "VORVUHPROSPER99": { email: "Vorvuhprosper9@gmail.com", phone: "233244363630" },
+        "SD": { email: "scholasticacudjoe507@gmail.com", phone: "233598237899" },
+        "SHAWAZ GH": { email: "isaacnelson5656@gmail.com", phone: "233550848284" },
+        "SHOCKSPHONES": { email: "ashockyankey@gmail.com", phone: "233241256656" },
+        "SIRBERN07": { email: "bernardoppong220@gmail.com", phone: "233541436151" },
+        "STJOYCEENT": { email: "Sirkobby48@gmail.com", phone: "233241732573" },
+        "VICENT1": { email: "vincentnutsugah@gmail.com", phone: "233202768482" },
+        "XANDER": { email: "alexboasiako11@gmail.com", phone: "233245521873" },
+        "ZACOSH": { email: "Zacosh024@gmail.com", phone: "233597146212" },
+        "MISSBEE": { email: "berniceapodei5@gmail.com", phone: "233540533034" },
+        "BAWA HABIB": { email: "bawahabib47@gmail.com", phone: "233240956004" },
+        "PRINCE AYIM GASU": { email: "ayimprince80@gmail.com", phone: "233593636045" },
+        "KWAKU DAMALIE": { email: "bossoanthony680@gmail.com", phone: "233547598101" },
+        "RAZAKZIBLIM": { email: "okpubsbusinesscentre1986@gmail.com", phone: "233247447688" },
+        "OHEMAA": { email: "bassuman74@gmail.com", phone: "233544575363"},
+        "BERNARDANNAN": { email: "bernardjuniorannan@gmail.com", phone: "233557067527" },
+        "JUSTICESARKO": { email: "amgposty915@gmail.com", phone: "233207158514"},
+        "ASAREEMMANUEL": { email: "asarerichway200@gmail.com", phone: "233546424321" }
+    };
 
-            document.getElementById("paymentForm").addEventListener("submit", function(event) {
-                event.preventDefault();
+    document.getElementById("paymentForm").addEventListener("submit", function(event) {
+        event.preventDefault();
 
-                const phoneNumber = document.getElementById("phoneNumber").value;
-                const agentId = document.getElementById("agentId").value.toUpperCase();
-                const selectedBundle = document.getElementById("bundle").value;
-                const amount = prices[selectedBundle]; // Amount in pesewas
+        const phoneNumber = document.getElementById("phoneNumber").value;
+        const agentId = document.getElementById("agentId").value.toUpperCase();
+        const selectedBundle = document.getElementById("bundle").value;
+        const amount = prices[selectedBundle]; // Amount in pesewas
 
-                if (!(agentId in agentEmails) || agentEmails[agentId] === "") {
-                    Swal.fire('Error', 'Invalid or unregistered Agent ID.', 'error');
-                    return;
-                }
+        if (!(agentId in agents)) {
+            Swal.fire('Error', 'Invalid or unregistered Agent ID.', 'error');
+            return;
+        }
 
-                const email = agentEmails[agentId];
+        const agentEmail = agents[agentId].email;
+        const agentPhone = agents[agentId].phone;
 
-                const handler = PaystackPop.setup({
-                    key: 'pk_live_fb405d2702a00868ba424f73b9148b7aad07b2b0', // Replace with your public key
-                    email: email,
-                    amount: amount,
-                    currency: 'GHS',
-                    ref: 'KYEKYEKU-' + Math.floor((Math.random() * 1000000000) + 1),
-                    metadata: {
-                        custom_fields: [{
-                            display_name: "Phone Number",
-                            variable_name: "phone_number",
-                            value: phoneNumber
-                        }]
-                    },
-                    callback: function(response) {
-                        const form = event.target;
-                        const formData = new FormData(form);
+        const handler = PaystackPop.setup({
+            key: 'pk_live_fb405d2702a00868ba424f73b9148b7aad07b2b0', // Replace with your public key
+            email: agentEmail,
+            amount: amount,
+            currency: 'GHS',
+            ref: 'KYEKYEKU-' + Math.floor((Math.random() * 1000000000) + 1),
+            metadata: {
+                custom_fields: [{
+                    display_name: "Phone Number",
+                    variable_name: "phone_number",
+                    value: phoneNumber
+                }]
+            },
+            callback: function(response) {
+                const form = event.target;
+                const formData = new FormData(form);
 
-                        fetch('https://api.sheetmonkey.io/form/s2tNaVG3kzyiw91cPx6AyC', {
-                            method: "POST",
-                            body: formData
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                return response.text().then(text => { throw new Error(text); });
-                            }
-                            return response.text();
-                        })
-                        .then(data => {
-                            Swal.fire('Success', 'Form submitted successfully', 'success');
-                            sendSMS(phoneNumber, selectedBundle); // Call the function to send SMS after successful payment
-                        })
-                        .catch(error => {
-                            console.error("Error:", error);
-                            Swal.fire('Error', `There was an error with your submission: ${error.message}`, 'error');
-                        });
-                    },
-                    onClose: function() {
-                        Swal.fire('Payment Cancelled', 'You closed the payment window.', 'info');
+                fetch('https://api.sheetmonkey.io/form/s2tNaVG3kzyiw91cPx6AyC', {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => { throw new Error(text); });
                     }
+                    return response.text();
+                })
+                .then(data => {
+                    Swal.fire('Success', 'Form submitted successfully', 'success');
+                    sendSMS(phoneNumber, selectedBundle); // Call the function to send SMS after successful payment
+                    sendAgentSMS(agentPhone, phoneNumber, selectedBundle); // Send SMS to the agent
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    Swal.fire('Error', `There was an error with your submission: ${error.message}`, 'error');
                 });
-
-                handler.openIframe();
-            });
-
-            function sendSMS(phoneNumber, selectedBundle) {
-                const packageNames = {
-                    "1": "1GB",
-                    "2": "2GB",
-                    "3": "3GB",
-                    "4": "4GB",
-                    "5": "5GB",
-                    "6": "6GB",
-                    "7": "7GB",
-                    "8": "8GB",
-                    "10": "10GB",
-                    "12": "12GB",
-                    "15": "15GB",
-                    "20": "20GB",
-                    "25": "25GB",
-                    "30": "30GB",
-                    "40": "40GB",
-                    "50": "50GB",
-                    "100": "100GB"
-                };
-
-                const package = packageNames[selectedBundle];
-                const apiUrl = `https://devp-sms03726-api.hubtel.com/v1/messages/send?clientid=janhcpit&clientsecret=mzrmyenb&from=KyekyekuTek&to=${phoneNumber}&content=${encodeURIComponent('Someone has just bought '+ package +' with new phone number ' + phoneNumber + '. Kindly confirm.')}`;
-
-                fetch(apiUrl)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log("SMS sent successfully:", data);
-                    })
-                    .catch(error => {
-                        console.error("Error sending SMS:", error);
-                        Swal.fire('Error', `There was an error sending the SMS: ${error.message}`, 'error');
-                    });
+            },
+            onClose: function() {
+                Swal.fire('Payment Cancelled', 'You closed the payment window.', 'info');
             }
-        </script>
+        });
+
+        handler.openIframe();
+    });
+
+    function sendSMS(phoneNumber, selectedBundle) {
+        const packageNames = {
+            "1": "1GB",
+            "2": "2GB",
+            "3": "3GB",
+            "4": "4GB",
+            "5": "5GB",
+            "6": "6GB",
+            "7": "7GB",
+            "8": "8GB",
+            "10": "10GB",
+            "12": "12GB",
+            "15": "15GB",
+            "20": "20GB",
+            "25": "25GB",
+            "30": "30GB",
+            "40": "40GB",
+            "50": "50GB",
+            "100": "100GB"
+        };
+
+        const package = packageNames[selectedBundle];
+        const apiUrl = `https://devp-sms03726-api.hubtel.com/v1/messages/send?clientid=janhcpit&clientsecret=mzrmyenb&from=KyekyekuTek&to=${phoneNumber}&content=${encodeURIComponent('Someone has just bought ' + package + ' with new phone number ' + phoneNumber + '. Kindly confirm.')}`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log("SMS sent successfully:", data);
+            })
+            .catch(error => {
+                console.error("Error sending SMS:", error);
+                Swal.fire('Error', `There was an error sending the SMS: ${error.message}`, 'error');
+            });
+    }
+
+    function sendAgentSMS(agentPhone, phoneNumber, selectedBundle) {
+        const packageNames = {
+            "1": "1GB",
+            "2": "2GB",
+            "3": "3GB",
+            "4": "4GB",
+            "5": "5GB",
+            "6": "6GB",
+            "7": "7GB",
+            "8": "8GB",
+            "10": "10GB",
+            "12": "12GB",
+            "15": "15GB",
+            "20": "20GB",
+            "25": "25GB",
+            "30": "30GB",
+            "40": "40GB",
+            "50": "50GB",
+            "100": "100GB"
+        };
+
+        const package = packageNames[selectedBundle];
+        const apiUrl = `https://apps.mnotify.net/smsapi?key=zwNY4rjo1XWnMXn8Om7Q8gk1U&to=${agentPhone}&msg=Your request to ${phoneNumber} has been on processing with ${package}&sender_id=KYE-TECH`;
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Agent SMS sent successfully:", data);
+            })
+            .catch(error => {
+                console.error("Error sending Agent SMS:", error);
+                Swal.fire('Error', `There was an error sending the SMS to the agent: ${error.message}`, 'error');
+            });
+    }
+</script>
     </form>
 </body>
 </html>
