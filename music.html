@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/30c032ee516d51ceb456a.jpg">
+    <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-image: url('https://i.pinimg.com/originals/b8/6a/f2/b86af24be084d3ce9f1b97ff4df0fdda.jpg');
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .music-player {
+      margin: 20px 0;
+    }
+
+    h2 {
+      color: blue;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      color: #2d3748;
+      margin-bottom: 30px;
+    }
+
+    .playlist {
+      list-style: none;
+      padding: 0;
+    }
+
+    .playlist-section {
+      margin-bottom: 30px;
+    }
+
+    .playlist-section p {
+      color: red;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .playlist li {
+      margin: 5px 0;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .playlist li:hover {
+      background-color: #05f1e6;
+    }
+
+    /* Style for canvas to resemble sound waves */
+    canvas {
+      width: 100%;
+      height: 150px;
+      background: #f9f9f9;
+      margin-top: 20px;
+      box-shadow: inset 0px 0px 25px -15px #000;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h2>KYEKYEKU-TECH FREE MUSIC</h2>
+    <h1 style="color: #f7090956;">Enjoy Our free Music</h1>
+
+    <div class="playlist-section">
+      <p>HIPLIFE</p>
+      <ul class="playlist">
+        <li data-src="https://www.naijadjmix.com/fastdownload/%20Best%20of%20Sarkodie%20Mixtape-www.naijadjmix.com.mp3">BEST OF SARKODIE</li>
+        <li data-src="https://www.naijadjmix.com/fastdownload/Dj%20Manni%20-%20Afro%20Black%20Sherif%20Kweku%20the%20Traveller%20Mixtape-www.naijadjmix.com.mp3">BEST OF BLACK SHERIF</li>
+        <li data-src="https://www.naijadjmix.com/fastdownload/Dj%20Linkup%20Best%20of%20Shatta%20Wale%20Mixtape-(WWW.NaijaDJMix.COM).mp3">BEST OF SHATTA WALE</li>
+        <li data-src="https://www.naijadjmix.com/fastdownload/Dj%20Shaker%20-%20Best%20of%20Stonebwoy%20Mixtape-(WWW.NaijaDJMix.COM).mp3?_=1">BEST OF STONEBWOY</li>
+      </ul>
+    </div>
+
+    <div class="playlist-section">
+      <p>HIGHLIFE</p>
+      <ul class="playlist">
+        <li data-src="https://www.naijadjmix.com/fastdownload/Best%20of%20Daasebre%20Gyamenah%20Mixtape%20-(WWW.NaijaDJMix.COM).mp3">BEST OF DASEBRE GYAMENAH</li>
+      </ul>
+    </div>
+
+    <div class="playlist-section">
+      <p>REGGAE</p>
+      <ul class="playlist">
+        <li data-src="https://www.naijadjmix.com/fastdownload/Dj%20Patiz%20-%20Tribute%20To%20Lucky%20Dube%20Mix-(WWW.NaijaDJMix.COM).mp3">BEST OF LUCKY DUBE</li>
+      </ul>
+    </div>
+
+    <audio id="audio" controls class="music-player"></audio>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+    class RenderWave {
+      constructor(fileSrc) {
+        this._samples = 10000;
+        this._strokeStyle = "#3098ff";
+        this.audioContext = new AudioContext();
+        this.canvas = document.querySelector("canvas");
+        this.ctx = this.canvas.getContext("2d");
+        this.data = [];
+
+        fetch(fileSrc)
+          .then(response => response.arrayBuffer())
+          .then(arrayBuffer => this.audioContext.decodeAudioData(arrayBuffer))
+          .then(audioBuffer => {
+            this.draw(this.normalizedData(audioBuffer));
+            this.drawData(this.data);
+          });
+      }
+
+      normalizedData(audioBuffer) {
+        const rawData = audioBuffer.getChannelData(0);
+        const samples = this._samples;
+        const blockSize = Math.floor(rawData.length / samples);
+        const filteredData = [];
+        for (let i = 0; i < samples; i++) {
+          filteredData.push(rawData[i * blockSize]);
+        }
+        return filteredData;
+      }
+
+      draw(normalizedData) {
+        const canvas = this.canvas;
+        const dpr = window.devicePixelRatio || 1;
+        const padding = 10;
+        canvas.width = canvas.offsetWidth * dpr;
+        canvas.height = (canvas.offsetHeight + padding * 2) * dpr;
+        this.ctx.scale(dpr, dpr);
+        this.ctx.translate(0, canvas.offsetHeight / 2 + padding);
+
+        const width = canvas.offsetWidth / normalizedData.length;
+        for (let i = 0; i < normalizedData.length; i++) {
+          const x = width * i;
+          let height = normalizedData[i] * canvas.offsetHeight - padding;
+          height = Math.max(0, Math.min(height, canvas.offsetHeight / 2));
+
+          this.data.push({ x, h: height, w: width, isEven: (i + 1) % 2 });
+        }
+      }
+
+      drawLineSegment(ctx, x, height, width, isEven, colors = this._strokeStyle) {
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = colors;
+        ctx.beginPath();
+        height = isEven ? height : -height;
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x + width, height);
+        ctx.stroke();
+      }
+
+      drawData(data, colors = this._strokeStyle) {
+        data.forEach(item => this.drawLineSegment(this.ctx, item.x, item.h, item.w, item.isEven, colors));
+      }
+
+      drawTimeline(percent) {
+        const end = Math.ceil(this._samples * percent);
+        const t = this.data.slice(0, end);
+        this.drawData(t, "#1d1e22");
+      }
+    }
+
+    const audioPlayer = document.getElementById("audio");
+    const playlist = document.querySelectorAll(".playlist li");
+
+    playlist.forEach(function (item) {
+      item.addEventListener("click", function () {
+        const fileSrc = this.getAttribute("data-src");
+        const wave = new RenderWave(fileSrc);
+        audioPlayer.src = fileSrc;
+        audioPlayer.play();
+        audioPlayer.ontimeupdate = function () {
+          const percent = this.currentTime / this.duration;
+          wave.drawTimeline(percent);
+        };
+      });
+    });
+  </script>
+</body>
+</html>
