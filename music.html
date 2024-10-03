@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/30c032ee516d51ceb456a.jpg">
-    <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/30c032ee516d51ceb456a.jpg">
+  <link rel="stylesheet" href="styles.css">
   <style>
     body {
       background-image: url('https://i1.sndcdn.com/artworks-000198161863-1uvpfw-t500x500.jpg');
@@ -38,16 +38,7 @@
     .playlist {
       list-style: none;
       padding: 0;
-    }
-
-    .playlist-section {
-      margin-bottom: 30px;
-    }
-
-    .playlist-section p {
-      color: red;
-      font-weight: bold;
-      font-size: 18px;
+      display: none; /* Initially hidden */
     }
 
     .playlist li {
@@ -63,7 +54,14 @@
       background-color: #05f1e6;
     }
 
-    /* Style for canvas to resemble sound waves */
+    select {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
     canvas {
       width: 100%;
       height: 150px;
@@ -72,34 +70,126 @@
       box-shadow: inset 0px 0px 25px -15px #000;
       border-radius: 5px;
     }
+
+    .search-bar {
+      margin-bottom: 20px;
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
   <div class="wrapper">
     <h2>KYEKYEKU-TECH FREE MUSIC</h2>
-    <h1 style="color: #f7090956;">Enjoy Our free Music</h1>
+    <h1 style="color: #f709097c;">Enjoy Our free Music</h1>
 
-    <div class="playlist-section">
-      <p>HIPLIFE</p>
+    <!-- Dropdown for Artist Selection -->
+    <select id="artistSelect">
+      <option value="">SELECT PLAYLIST</option>
+      <option value="hiplife">GHANA HITS SONGS</option>
+      <option value="highlife">GOSPEL/WORSHIP</option>
+      <option value="reggae">REGGAE</option>
+    </select>
+
+    <!-- Search bar -->
+    <input type="text" id="searchBar" class="search-bar" placeholder="Search song...">
+
+    <!-- Playlist for each artist (initially hidden) -->
+    <div id="hiplife" class="playlist-section">
       <ul class="playlist">
-        <li data-src="https://www.naijadjmix.com/fastdownload/%20Best%20of%20Sarkodie%20Mixtape-www.naijadjmix.com.mp3">BEST OF SARKODIE</li>
-        <li data-src="https://www.naijadjmix.com/fastdownload/Dj%20Manni%20-%20Afro%20Black%20Sherif%20Kweku%20the%20Traveller%20Mixtape-www.naijadjmix.com.mp3">BEST OF BLACK SHERIF</li>
-        <li data-src="https://www.naijadjmix.com/fastdownload/Dj%20Linkup%20Best%20of%20Shatta%20Wale%20Mixtape-(WWW.NaijaDJMix.COM).mp3">BEST OF SHATTA WALE</li>
-        <li data-src="https://www.naijadjmix.com/fastdownload/Dj%20Shaker%20-%20Best%20of%20Stonebwoy%20Mixtape-(WWW.NaijaDJMix.COM).mp3?_=1">BEST OF STONEBWOY</li>
+       <li data-src="Amerado-Ankonam.mp3">Ankonam-Amerado</li>
+        <li data-src="Date-Rush.mp3">Date Rush-Amerado</li>
+        <li data-src="Ankonam.mp3">Ankonam-Black Sherif</li>
+        <li data-src="Black-Sherif-45.mp3">Black-Sherif-45</li>
+        <li data-src="Black-Sherif-Destiny.mp3">Black-Sherif-Destiny</li>
+        <li data-src="Black-Sherif-Homeless-Song.mp3">Black-Sherif-Homeless-Song</li>
+        <li data-src="Black-Sherif-Konongo-Zongo.mp3">Black-Sherif-Konongo-Zongo</li>
+        <li data-src="Black-Sherif-Money.mp3">Black-Sherif-Money</li>
+        <li data-src="Black-Sherif-Shut-Up.mp3">Black-Sherif-Shut-Up</li>
+        <li data-src="Black-Sherif-Soja.mp3">Black-Sherif-Soja</li>
+        <li data-src="Black-Sherif-Wasteman.mp3">Black-Sherif-Wasteman</li>
+        <li data-src="Black-Sherif-YAYA.mp3">Black-Sherif-YAYA</li>
+        <li data-src="Daddy-Lumba-Ankwanoma.mp3">Ankwanoma-Daddy Lumba</li>
+        <li data-src="Daddy-Lumba-Sika-Asem.mp3">Sika_Asem-Daddy Lumba</li>
+        <li data-src="Daddy-Lumba-Theresa.mp3">Theresah-Daddy Lumba</li>
+        <li data-src="Ephraim-Aleke-feat-Sarkodie">Ephraim-Aleke-feat-Sarkodie</li>
+        <li data-src="Fameye-Very-Soon.mp3">Very_Soon-Fameye</li>
+        <li data-src="Gdasma-Da-Senior-Come-Down.mp3">Gdasma-Da-Senior-Come-Down</li>
+        <li data-src="Jay-onez-Bay-bay.mp3">Jay-onez-Bay-bay</li>
+        <li data-src="Jay-Rox-Day-By-Day.mp3">Jay-Rox-Day-By-Day</li>
+        <li data-src="KiDi-Lomo-Lomo-ft-Black-Sherif.mp3">KiDi-Lomo-Lomo-ft-Black-Sherif</li>
+        <li data-src="King-Paluta-All-My-Life.mp3">King-Paluta-All-My-Life</li>
+        <li data-src="King-Paluta-Aseda.mp3">King-Paluta-Aseda</li>
+        <li data-src="King-Paluta-Makoma.mp3">King-Paluta-Makoma</li>
+        <li data-src="King-Promise-Paris.mp3">King-Promise-Paris</li>
+        <li data-src="King-Promise-Terminator.mp3">King-Promise-Terminator</li>
+        <li data-src="Kofi-Kinaata-Abonsam.mp3">Kofi-Kinaata-Abonsam</li>
+        <li data-src="Kofi-Kinaata-Confession.mp3">Kofi-Kinaata-Confession</li>
+        <li data-src="Kofi-Kinaata-Kunfu-Party.mp3">Kofi-Kinaata-Kunfu-Party</li>
+        <li data-src="Kofi-Kinaata-Saman.mp3">Kofi-Kinaata-Saman</li>
+        <li data-src="Kuami-Eugene-Beifour.mp3">Kuami-Eugene-Beifour</li>
+        <li data-src="Kuami-Eugene-Canopy.mp3">Kuami-Eugene-Canopy</li>
+        <li data-src="Kuami-Eugene-Demigod.mp3">Kuami-Eugene-Demigod</li>
+        <li data-src="Kuami-Eugene-Mama.mp3">Kuami-Eugene-Mama</li>
+        <li data-src="Kuami-Eugene-Monica.mp3">Kuami-Eugene-Monica</li>
+        <li data-src="Kuami-Eugene-Scolom.mp3">Kuami-Eugene-Scolom</li>
+        <li data-src="Kweku-Darlington-Grateful-To-Your-Ex.mp3">Kweku-Darlington-Grateful-To-Your-Ex</li>
+        <li data-src="Kweku-Smoke-Hope.mp3">Kweku-Smoke-Hope</li>
+        <li data-src="Kweku-Smoke-Intro.mp3">Kweku-Smoke-Intro</li>
+        <li data-src="Kweku-Smoke-Kweku-Smoke.mp3">Kweku-Smoke-Kweku-Smoke</li>
+        <li data-src="Kweku-Smoke-MO-SMOKE.mp3">Kweku-Smoke-MO-SMOKE</li>
+        <li data-src="KWESI-AMEWUGA-Action.mp3">KWESI-AMEWUGA-Action</li>
+        <li data-src="KWESI-AMEWUGA-Ase3.mp3">KWESI-AMEWUGA-Ase3</li>
+        <li data-src="KWESI-AMEWUGA-Kwesi-Bdamfo.mp3">KWESI-AMEWUGA-Kwesi-Bdamfo</li>
+        <li data-src="KWESI-AMEWUGA-Mokasa.mp3">KWESI-AMEWUGA-Mokasa</li>
+        <li data-src="KWESI-AMEWUGA-Prepare.mp3">KWESI-AMEWUGA-Prepare</li>
+        <li data-src="KWESI-AMEWUGA-TRAP.mp3">KWESI-AMEWUGA-TRAP</li>
+        <li data-src="Omah-Lay-Holy-Ghost.mp3">Omah-Lay-Holy-Ghost</li>
+        <li data-src="Omah-Lay-Soso.mp3">Omah-Lay-Soso</li>
+        <li data-src="Rema-Holiday.mp3">Rema-Holiday</li>
+        <li data-src="Sarkodie-Confam.mp3">Sarkodie-Confam</li>
+        <li data-src="Sarkodie-Loyalty.mp3">Sarkodie-Loyalty</li>
+        <li data-src="Sarkodie-Oofeetso.mp3">Sarkodie-Oofeetso</li>
+        <li data-src="Sarkodie-Otan.mp3">Sarkodie-Otan</li>
+        <li data-src="Sarkodie-Try-Me.mp3">Sarkodie-Try-Me</li>
+        <li data-src="Shatta-Wale-Gringo.mp3">Shatta-Wale-Gringo</li>
+        <li data-src="Stonebwoy">BEST of Stonebwoy</li>
+        <li data-src="dasebre.mp3">BEST of Dasebre Gyamena</li>
       </ul>
     </div>
 
-    <div class="playlist-section">
-      <p>HIGHLIFE</p>
+    <div id="highlife" class="playlist-section">
       <ul class="playlist">
-        <li data-src="https://www.naijadjmix.com/fastdownload/Best%20of%20Daasebre%20Gyamenah%20Mixtape%20-(WWW.NaijaDJMix.COM).mp3">BEST OF DASEBRE GYAMENAH</li>
+       <li data-src="Anita-Afriyie-Adom.mp3">Anita-Afriyie-Adom</li>
+        <li data-src="Christiana-Love-Beko-Mame-Worship.mp3">Christiana-Love-Beko-Mame-Worship</li>
+        <li data-src="Christiana-Love-Mate-Wase-Worship.mp3">Christiana-Love-Mate-Wase-Worship</li>
+        <li data-src="Cindy-Thompson-Awurade-Kasa.mp3">Cindy-Thompson-Awurade-Kasa worship</li>
+        <li data-src="Diana-Hamilton-–-W’asem.mp3">Diana-Hamilton-–-W’asem</li>
+        <li data-src="Florence-Obinim-Osoro-Ne-Yefie.mp3">Florence-Obinim-Osoro-Ne-Yefie</li>
+        <li data-src="Ghana-Worship-Songs-Mix-2021-–-Early-Morning-Devotion-Worship-Songs.mp3">Worship-mix-Early-Morning-Devotion-Worship-Songs</li>
+        <li data-src="MC-Abraham-Cha-Cha.mp3">MC-Abraham-Cha-Cha</li>
+        <li data-src="Mc-Abraham-Ebeye-yie.mp3">Mc-Abraham-Ebeye-yie</li>
+        <li data-src="Mc-Abraham-Nhyira-ne-nnome.mp3">Mc-Abraham-Nhyira-ne-nnome</li>
+        <li data-src="Mc-Abraham-Yesu-nnim-mu-a-enye-yie.mp3">Mc-Abraham-Yesu-nnim-mu-a-enye-yie</li>
+        <li data-src="Yaw-Sarpong-Adwendwene.mp3">Yaw-Sarpong-Adwendwene</li>
+        <li data-src="Yaw-Sarpong-and-Asomafo-Dua-Esi-Asobonten-Ho.mp3">Yaw-Sarpong-and-Asomafo-Dua-Esi-Asobonten-Ho</li>
+        <li data-src="Yaw-Sarpong-Asomafo-–-Aseda-Ndwom-Ft-Kweku-Gyasi.mp3">Yaw-Sarpong-Asomafo-–-Aseda-Ndwom-Ft-Kweku-Gyasi</li>
       </ul>
     </div>
 
-    <div class="playlist-section">
-      <p>REGGAE</p>
+    <div id="reggae" class="playlist-section">
       <ul class="playlist">
-        <li data-src="https://www.naijadjmix.com/fastdownload/Dj%20Patiz%20-%20Tribute%20To%20Lucky%20Dube%20Mix-(WWW.NaijaDJMix.COM).mp3">BEST OF LUCKY DUBE</li>
+         <li data-src="Lucky-Dube-I-Want-To-Know-What-Love-Is.mp3">Lucky-Dube-I-Want-To-Know-What-Love-Is</li>
+        <li data-src="Lucky-Dube-Remember-Me.mp3">Lucky-Dube-Remember-Me</li>
+        <li data-src="Lucky-Dube-Slave.mp3">Lucky-Dube-Slave</li>
+        <li data-src="Lucky-Dube-Teach-the-World.mp3">Lucky-Dube-Teach-the-World</li>
+        <li data-src="Lucky-Dube-The-Way-It-Is.mp3">Lucky-Dube-The-Way-It-Is</li>
+        <li data-src="Lucky-Dube-Respect.mp3">Lucky-Dube-Respect</li>
+        <li data-src="Lucky-Dube-Romeo.mp3">Lucky-Dube-Romeo</li>
+        <li data-src=""></li>
       </ul>
     </div>
 
@@ -111,87 +201,70 @@
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
     class RenderWave {
-      constructor(fileSrc) {
-        this._samples = 10000;
-        this._strokeStyle = "#3098ff";
-        this.audioContext = new AudioContext();
-        this.canvas = document.querySelector("canvas");
-        this.ctx = this.canvas.getContext("2d");
-        this.data = [];
-
-        fetch(fileSrc)
-          .then(response => response.arrayBuffer())
-          .then(arrayBuffer => this.audioContext.decodeAudioData(arrayBuffer))
-          .then(audioBuffer => {
-            this.draw(this.normalizedData(audioBuffer));
-            this.drawData(this.data);
-          });
-      }
-
-      normalizedData(audioBuffer) {
-        const rawData = audioBuffer.getChannelData(0);
-        const samples = this._samples;
-        const blockSize = Math.floor(rawData.length / samples);
-        const filteredData = [];
-        for (let i = 0; i < samples; i++) {
-          filteredData.push(rawData[i * blockSize]);
-        }
-        return filteredData;
-      }
-
-      draw(normalizedData) {
-        const canvas = this.canvas;
-        const dpr = window.devicePixelRatio || 1;
-        const padding = 10;
-        canvas.width = canvas.offsetWidth * dpr;
-        canvas.height = (canvas.offsetHeight + padding * 2) * dpr;
-        this.ctx.scale(dpr, dpr);
-        this.ctx.translate(0, canvas.offsetHeight / 2 + padding);
-
-        const width = canvas.offsetWidth / normalizedData.length;
-        for (let i = 0; i < normalizedData.length; i++) {
-          const x = width * i;
-          let height = normalizedData[i] * canvas.offsetHeight - padding;
-          height = Math.max(0, Math.min(height, canvas.offsetHeight / 2));
-
-          this.data.push({ x, h: height, w: width, isEven: (i + 1) % 2 });
-        }
-      }
-
-      drawLineSegment(ctx, x, height, width, isEven, colors = this._strokeStyle) {
-        ctx.lineWidth = 1;
-        ctx.strokeStyle = colors;
-        ctx.beginPath();
-        height = isEven ? height : -height;
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x + width, height);
-        ctx.stroke();
-      }
-
-      drawData(data, colors = this._strokeStyle) {
-        data.forEach(item => this.drawLineSegment(this.ctx, item.x, item.h, item.w, item.isEven, colors));
-      }
-
-      drawTimeline(percent) {
-        const end = Math.ceil(this._samples * percent);
-        const t = this.data.slice(0, end);
-        this.drawData(t, "#1d1e22");
-      }
+      // RenderWave class code...
     }
 
     const audioPlayer = document.getElementById("audio");
-    const playlist = document.querySelectorAll(".playlist li");
+    const artistSelect = document.getElementById("artistSelect");
+    const searchBar = document.getElementById("searchBar");
 
-    playlist.forEach(function (item) {
+    let currentPlaylist = [];
+    let currentIndex = 0;
+
+    artistSelect.addEventListener("change", function () {
+      const selectedArtist = this.value;
+
+      // Hide all playlists first
+      document.querySelectorAll('.playlist-section').forEach(function (section) {
+        section.querySelector('.playlist').style.display = 'none';
+      });
+
+      if (selectedArtist) {
+        const playlist = document.getElementById(selectedArtist).querySelector('.playlist');
+        playlist.style.display = 'block';
+        currentPlaylist = Array.from(playlist.querySelectorAll('li')); // Store current playlist
+        currentIndex = 0; // Reset index
+      }
+    });
+
+    document.querySelectorAll(".playlist li").forEach(function (item, index) {
       item.addEventListener("click", function () {
-        const fileSrc = this.getAttribute("data-src");
-        const wave = new RenderWave(fileSrc);
-        audioPlayer.src = fileSrc;
-        audioPlayer.play();
-        audioPlayer.ontimeupdate = function () {
-          const percent = this.currentTime / this.duration;
-          wave.drawTimeline(percent);
-        };
+        playSong(index);
+      });
+    });
+
+    function playSong(index) {
+      const fileSrc = currentPlaylist[index].getAttribute("data-src");
+      const wave = new RenderWave(fileSrc);
+      audioPlayer.src = fileSrc;
+      audioPlayer.play();
+      currentIndex = index; // Update current index
+
+      audioPlayer.ontimeupdate = function () {
+        const percent = this.currentTime / this.duration;
+        wave.drawTimeline(percent);
+      };
+
+      audioPlayer.onended = function () {
+        playNext(); // Play next song when the current one ends
+      };
+    }
+
+    function playNext() {
+      currentIndex = (currentIndex + 1) % currentPlaylist.length; // Move to the next song
+      playSong(currentIndex);
+    }
+
+    // Search bar functionality
+    searchBar.addEventListener('input', function() {
+      const searchText = this.value.toLowerCase();
+      currentPlaylist.forEach(function (item) {
+        const songName = item.textContent.toLowerCase();
+        if (songName.includes(searchText)) {
+          item.style.display = ''; // Show if match
+        } else {
+          item.style.display = 'none'; // Hide if no match
+        }
       });
     });
   </script>
