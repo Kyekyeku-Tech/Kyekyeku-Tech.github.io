@@ -38,7 +38,7 @@
     .playlist {
       list-style: none;
       padding: 0;
-      display: none; /* Initially hidden */
+      display: none;
     }
 
     .playlist li {
@@ -110,7 +110,7 @@
     <div id="hiplife" class="playlist-section">
       <ul class="playlist">
         <!-- Your song list for hiplife here -->
-        <li data-src="https://cdn.trendybeatz.com/audio/Amerado-Abotr3-Ft-Black-Sherif-(TrendyBeatz.com).mp3">Abotr3-Amerado</li>
+       <li data-src="https://cdn.trendybeatz.com/audio/Amerado-Abotr3-Ft-Black-Sherif-(TrendyBeatz.com).mp3">Abotr3-Amerado</li>
         <li data-src="https://www.naijaflavour.com/mp3manager/uploads/2024/07//Amerado%20%E2%80%93%20Date%20Rush_(Naijaflavour.com).mp3">Date Rush-Amerado</li>
         <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Ankonam-(TrendyBeatz.com).mp3">Ankonam-Black Sherif</li>
         <li data-src="https://www.ghanasong.com/wp-content/uploads/2022/10/Black-Sherif-45-www.Ghanasong.com_.mp3">Black-Sherif-45</li>
@@ -175,20 +175,21 @@
 
     <div id="highlife" class="playlist-section">
       <ul class="playlist">
-        <li data-src="Anita-Afriyie-Adom.mp3">Anita-Afriyie-Adom</li>
-        <li data-src="Christiana-Love-Beko-Mame-Worship.mp3">Christiana-Love-Beko-Mame-Worship</li>
-        <li data-src="Christiana-Love-Mate-Wase-Worship.mp3">Christiana-Love-Mate-Wase-Worship</li>
-        <li data-src="Cindy-Thompson-Awurade-Kasa.mp3">Cindy-Thompson-Awurade-Kasa worship</li>
-        <li data-src="Diana-Hamilton-–-W’asem.mp3">Diana-Hamilton-–-W’asem</li>
-        <li data-src="Florence-Obinim-Osoro-Ne-Yefie.mp3">Florence-Obinim-Osoro-Ne-Yefie</li>
-        <li data-src="Ghana-Worship-Songs-Mix-2021-–-Early-Morning-Devotion-Worship-Songs.mp3">Worship-mix-Early-Morning-Devotion-Worship-Songs</li>
+        <li data-src="https://ghanagospelsongs.com/wp-content/uploads/2020/06/Christiana-Love-Beko-Mame-Worship-www.GhanaGospelSongs.com_.mp3">Christiana-Love-Beko-Mame-Worship</li>
+        <li data-src="https://ghanagospelsongs.com/wp-content/uploads/2020/06/Christiana-Love-Mate-Wase-Worship-www.GhanaGospelSongs.com_.mp3">Christiana-Love-Mate-Wase-Worship</li>
+        <li data-src="https://ghanagospelsongs.com/wp-content/uploads/2020/02/Cindy-Thompson-Awurade-Kasa-Worship-www.GhanaGospelSongs.com_.mp3">Cindy-Thompson-Awurade-Kasa worship</li>
+        <li data-src="https://ghanagospelsongs.com/wp-content/uploads/2022/01/Ghana-Worship-Songs-Mix-2021-%E2%80%93-Early-Morning-Devotion-Worship-Songs-For-Prayer-www.GhanaGospelSongs.com_.mp3">Worship-mix-Early-Morning-Devotion-Worship-Songs</li>
         <li data-src="MC-Abraham-Cha-Cha.mp3">MC-Abraham-Cha-Cha</li>
         <li data-src="Mc-Abraham-Ebeye-yie.mp3">Mc-Abraham-Ebeye-yie</li>
         <li data-src="Mc-Abraham-Nhyira-ne-nnome.mp3">Mc-Abraham-Nhyira-ne-nnome</li>
         <li data-src="Mc-Abraham-Yesu-nnim-mu-a-enye-yie.mp3">Mc-Abraham-Yesu-nnim-mu-a-enye-yie</li>
         <li data-src="Yaw-Sarpong-Adwendwene.mp3">Yaw-Sarpong-Adwendwene</li>
         <li data-src="Yaw-Sarpong-and-Asomafo-Dua-Esi-Asobonten-Ho.mp3">Yaw-Sarpong-and-Asomafo-Dua-Esi-Asobonten-Ho</li>
+        <li data-src="Florence-Obinim-Osoro-Ne-Yefie.mp3">Florence-Obinim-Osoro-Ne-Yefie</li>
         <li data-src="Yaw-Sarpong-Asomafo-–-Aseda-Ndwom-Ft-Kweku-Gyasi.mp3">Yaw-Sarpong-Asomafo-–-Aseda-Ndwom-Ft-Kweku-Gyasi</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Diana-Hamilton-Wasem-Your-Word-(TrendyBeatz.com).mp3">Diana-Hamilton-–-W’asem</li>
+        <li data-src="https://files.ceenaija.com/wp-content/uploads/music/2023/01/Anita_Afriyie_-_Adehye_Mogya_CeeNaija.com_.mp3">Anita-Afriyie-Adehye Mogya</li>
+        <li data-src="https://files.ceenaija.com/wp-content/uploads/music/2023/05/Nacee_-_Aseda_CeeNaija.com_.mp3">Aseda by Nacee</li>
       </ul>
     </div>
 
@@ -201,7 +202,6 @@
         <li data-src="Lucky-Dube-The-Way-It-Is.mp3">Lucky-Dube-The-Way-It-Is</li>
         <li data-src="Lucky-Dube-Respect.mp3">Lucky-Dube-Respect</li>
         <li data-src="Lucky-Dube-Romeo.mp3">Lucky-Dube-Romeo</li>
-        <li data-src=""></li>
       </ul>
     </div>
 
@@ -213,7 +213,14 @@
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
 
     class RenderWave {
-      // RenderWave class code...
+      constructor(src) {
+        this.src = src;
+        this.context = new AudioContext();
+      }
+
+      drawTimeline(percent) {
+        // Dummy function for the wave drawing
+      }
     }
 
     const audioPlayer = document.getElementById("audio");
@@ -222,27 +229,30 @@
     let currentPlaylist = [];
     let currentIndex = 0;
 
+    // Bind events for buttons
     document.querySelectorAll(".artist-btn").forEach(function (btn) {
       btn.addEventListener("click", function () {
         const selectedArtist = this.getAttribute("data-artist");
 
-        // Hide all playlists first
+        // Hide all playlists
         document.querySelectorAll('.playlist-section').forEach(function (section) {
           section.querySelector('.playlist').style.display = 'none';
         });
 
+        // Show the selected playlist and attach event listeners
         if (selectedArtist) {
           const playlist = document.getElementById(selectedArtist).querySelector('.playlist');
           playlist.style.display = 'block';
           currentPlaylist = Array.from(playlist.querySelectorAll('li')); // Store current playlist
           currentIndex = 0; // Reset index
-        }
-      });
-    });
 
-    document.querySelectorAll(".playlist li").forEach(function (item, index) {
-      item.addEventListener("click", function () {
-        playSong(index);
+          // Bind click events for the songs in the playlist
+          playlist.querySelectorAll('li').forEach(function (item, index) {
+            item.addEventListener("click", function () {
+              playSong(index);
+            });
+          });
+        }
       });
     });
 
@@ -251,7 +261,7 @@
       const wave = new RenderWave(fileSrc);
       audioPlayer.src = fileSrc;
       audioPlayer.play();
-      currentIndex = index; // Update current index
+      currentIndex = index;
 
       audioPlayer.ontimeupdate = function () {
         const percent = this.currentTime / this.duration;
@@ -259,12 +269,12 @@
       };
 
       audioPlayer.onended = function () {
-        playNext(); // Play next song when the current one ends
+        playNext();
       };
     }
 
     function playNext() {
-      currentIndex = (currentIndex + 1) % currentPlaylist.length; // Move to the next song
+      currentIndex = (currentIndex + 1) % currentPlaylist.length;
       playSong(currentIndex);
     }
 
