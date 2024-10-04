@@ -56,7 +56,7 @@
       color: white;
     }
 
-    select {
+    button {
       padding: 10px;
       font-size: 16px;
       margin-bottom: 20px;
@@ -64,6 +64,12 @@
       border: 2px solid #1b0388;
       background-color: #02010a;
       color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #1b0388;
     }
 
     canvas {
@@ -92,13 +98,10 @@
     <h2>KYEKYEKU-TECH FREE MUSIC</h2>
     <h1 style="color: #f709097c;">Enjoy Our free Music</h1>
 
-    <!-- Dropdown for Artist Selection -->
-    <select id="artistSelect">
-      <option value="">SELECT PLAYLIST</option>
-      <option value="hiplife">GHANA HITS SONGS</option>
-      <option value="highlife">GOSPEL/WORSHIP</option>
-      <option value="reggae">REGGAE</option>
-    </select>
+    <!-- Buttons for Artist Selection -->
+    <button class="artist-btn" data-artist="hiplife">GHANA HITS SONGS</button>
+    <button class="artist-btn" data-artist="highlife">GOSPEL/WORSHIP</button>
+    <button class="artist-btn" data-artist="reggae">REGGAE</button><br>
 
     <!-- Search bar -->
     <input type="text" id="searchBar" class="search-bar" placeholder="Search song...">
@@ -106,7 +109,8 @@
     <!-- Playlist for each artist (initially hidden) -->
     <div id="hiplife" class="playlist-section">
       <ul class="playlist">
-       <li data-src="https://cdn.trendybeatz.com/audio/Amerado-Abotr3-Ft-Black-Sherif-(TrendyBeatz.com).mp3">Abotr3-Amerado</li>
+        <!-- Your song list for hiplife here -->
+        <li data-src="https://cdn.trendybeatz.com/audio/Amerado-Abotr3-Ft-Black-Sherif-(TrendyBeatz.com).mp3">Abotr3-Amerado</li>
         <li data-src="https://www.naijaflavour.com/mp3manager/uploads/2024/07//Amerado%20%E2%80%93%20Date%20Rush_(Naijaflavour.com).mp3">Date Rush-Amerado</li>
         <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Ankonam-(TrendyBeatz.com).mp3">Ankonam-Black Sherif</li>
         <li data-src="https://www.ghanasong.com/wp-content/uploads/2022/10/Black-Sherif-45-www.Ghanasong.com_.mp3">Black-Sherif-45</li>
@@ -171,7 +175,7 @@
 
     <div id="highlife" class="playlist-section">
       <ul class="playlist">
-       <li data-src="Anita-Afriyie-Adom.mp3">Anita-Afriyie-Adom</li>
+        <li data-src="Anita-Afriyie-Adom.mp3">Anita-Afriyie-Adom</li>
         <li data-src="Christiana-Love-Beko-Mame-Worship.mp3">Christiana-Love-Beko-Mame-Worship</li>
         <li data-src="Christiana-Love-Mate-Wase-Worship.mp3">Christiana-Love-Mate-Wase-Worship</li>
         <li data-src="Cindy-Thompson-Awurade-Kasa.mp3">Cindy-Thompson-Awurade-Kasa worship</li>
@@ -190,7 +194,7 @@
 
     <div id="reggae" class="playlist-section">
       <ul class="playlist">
-         <li data-src="Lucky-Dube-I-Want-To-Know-What-Love-Is.mp3">Lucky-Dube-I-Want-To-Know-What-Love-Is</li>
+        <li data-src="Lucky-Dube-I-Want-To-Know-What-Love-Is.mp3">Lucky-Dube-I-Want-To-Know-What-Love-Is</li>
         <li data-src="Lucky-Dube-Remember-Me.mp3">Lucky-Dube-Remember-Me</li>
         <li data-src="Lucky-Dube-Slave.mp3">Lucky-Dube-Slave</li>
         <li data-src="Lucky-Dube-Teach-the-World.mp3">Lucky-Dube-Teach-the-World</li>
@@ -213,26 +217,27 @@
     }
 
     const audioPlayer = document.getElementById("audio");
-    const artistSelect = document.getElementById("artistSelect");
     const searchBar = document.getElementById("searchBar");
 
     let currentPlaylist = [];
     let currentIndex = 0;
 
-    artistSelect.addEventListener("change", function () {
-      const selectedArtist = this.value;
+    document.querySelectorAll(".artist-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const selectedArtist = this.getAttribute("data-artist");
 
-      // Hide all playlists first
-      document.querySelectorAll('.playlist-section').forEach(function (section) {
-        section.querySelector('.playlist').style.display = 'none';
+        // Hide all playlists first
+        document.querySelectorAll('.playlist-section').forEach(function (section) {
+          section.querySelector('.playlist').style.display = 'none';
+        });
+
+        if (selectedArtist) {
+          const playlist = document.getElementById(selectedArtist).querySelector('.playlist');
+          playlist.style.display = 'block';
+          currentPlaylist = Array.from(playlist.querySelectorAll('li')); // Store current playlist
+          currentIndex = 0; // Reset index
+        }
       });
-
-      if (selectedArtist) {
-        const playlist = document.getElementById(selectedArtist).querySelector('.playlist');
-        playlist.style.display = 'block';
-        currentPlaylist = Array.from(playlist.querySelectorAll('li')); // Store current playlist
-        currentIndex = 0; // Reset index
-      }
     });
 
     document.querySelectorAll(".playlist li").forEach(function (item, index) {
@@ -264,7 +269,7 @@
     }
 
     // Search bar functionality
-    searchBar.addEventListener('input', function() {
+    searchBar.addEventListener('input', function () {
       const searchText = this.value.toLowerCase();
       currentPlaylist.forEach(function (item) {
         const songName = item.textContent.toLowerCase();
