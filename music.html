@@ -44,14 +44,16 @@
     .playlist li {
       margin: 5px 0;
       padding: 10px;
-      background-color: #fff;
+      background-color: rgba(0, 9, 10, 0.671);
+      color: #05e8f8;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
     }
 
     .playlist li:hover {
-      background-color: #05f1e6;
+      background-color: #f13405d2;
+      color: white;
     }
 
     select {
@@ -59,15 +61,17 @@
       font-size: 16px;
       margin-bottom: 20px;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: 2px solid #1b0388;
+      background-color: #02010a;
+      color: white;
     }
 
     canvas {
       width: 100%;
       height: 150px;
-      background: #f9f9f9;
+      background: transparent;
       margin-top: 20px;
-      box-shadow: inset 0px 0px 25px -15px #000;
+      box-shadow: inset 0px 0px 25px -15px #f4f802;
       border-radius: 5px;
     }
 
@@ -76,8 +80,10 @@
       padding: 10px;
       font-size: 16px;
       width: 80%;
-      border: 1px solid #ccc;
+      border: 2px solid #1b0388;
       border-radius: 5px;
+      background-color: #02010a;
+      color: white;
     }
   </style>
 </head>
@@ -100,18 +106,20 @@
     <!-- Playlist for each artist (initially hidden) -->
     <div id="hiplife" class="playlist-section">
       <ul class="playlist">
-       <li data-src="Amerado-Ankonam.mp3">Ankonam-Amerado</li>
-        <li data-src="Date-Rush.mp3">Date Rush-Amerado</li>
-        <li data-src="Ankonam.mp3">Ankonam-Black Sherif</li>
-        <li data-src="Black-Sherif-45.mp3">Black-Sherif-45</li>
-        <li data-src="Black-Sherif-Destiny.mp3">Black-Sherif-Destiny</li>
-        <li data-src="Black-Sherif-Homeless-Song.mp3">Black-Sherif-Homeless-Song</li>
-        <li data-src="Black-Sherif-Konongo-Zongo.mp3">Black-Sherif-Konongo-Zongo</li>
-        <li data-src="Black-Sherif-Money.mp3">Black-Sherif-Money</li>
-        <li data-src="Black-Sherif-Shut-Up.mp3">Black-Sherif-Shut-Up</li>
-        <li data-src="Black-Sherif-Soja.mp3">Black-Sherif-Soja</li>
-        <li data-src="Black-Sherif-Wasteman.mp3">Black-Sherif-Wasteman</li>
-        <li data-src="Black-Sherif-YAYA.mp3">Black-Sherif-YAYA</li>
+       <li data-src="https://cdn.trendybeatz.com/audio/Amerado-Abotr3-Ft-Black-Sherif-(TrendyBeatz.com).mp3">Abotr3-Amerado</li>
+        <li data-src="https://www.naijaflavour.com/mp3manager/uploads/2024/07//Amerado%20%E2%80%93%20Date%20Rush_(Naijaflavour.com).mp3">Date Rush-Amerado</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Ankonam-(TrendyBeatz.com).mp3">Ankonam-Black Sherif</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2022/10/Black-Sherif-45-www.Ghanasong.com_.mp3">Black-Sherif-45</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/11/Black-Sherif-x-Samsney-Gold-Digga.mp3_GhanaSongs.com_.mp3">Black-Sherif-Gold Diga</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/12/Black-Sherif-Ft-Burna-Boy-%E2%80%93-2nd-Sermon-Remix.mp3">Black Sherif Ft Burna Boy – 2nd Sermon Remix</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2022/10/Black-Sherif-Konongo-Zongo-www.Ghanasong.com_.mp3">Black-Sherif-Konongo-Zongo</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Money-(TrendyBeatz.com).mp3">Black-Sherif-Money</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Shut-Up-(TrendyBeatz.com).mp3">Black-Sherif-Shut-Up</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2022/09/Black-Sherif-Soja-www.Ghanasong.com_.mp3">Black-Sherif-Soja</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/11/SmallGod-Ft-Morian-Doll-x-Vic-Mensa-x-Black-Sherif-x-Kwaku-DMC-%E2%80%93-Holy-F4K.mp3_GhanaSongs.com_.mp3">SmallGod Ft  Black Sherif x Kwaku DMC</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/11/Kiddblack-Ft-Black-Sherif-Assignment.mp3_GhanaSongs.com_.mp3">Kiddblack Ft Black Sherif – Assignment</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Yaya-(TrendyBeatz.com).mp3">Black-Sherif-Yaya-</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2024/08/AratheJay-Ft-Black-Sherif-Jesus-Christ-2.www_.Ghanasongs.com_.mp3">AratheJay Ft Black Sherif – Jesus</li>
         <li data-src="Daddy-Lumba-Ankwanoma.mp3">Ankwanoma-Daddy Lumba</li>
         <li data-src="Daddy-Lumba-Sika-Asem.mp3">Sika_Asem-Daddy Lumba</li>
         <li data-src="Daddy-Lumba-Theresa.mp3">Theresah-Daddy Lumba</li>
