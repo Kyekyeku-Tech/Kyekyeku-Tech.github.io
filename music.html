@@ -91,6 +91,13 @@
       background-color: #02010a;
       color: white;
     }
+    .song-title {
+      font-size: 20px;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.486);
+      color: rgb(250, 213, 3);
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -102,7 +109,10 @@
     <button class="artist-btn" data-artist="hiplife">GHANA HITS SONGS</button>
     <button class="artist-btn" data-artist="highlife">GOSPEL/WORSHIP</button>
     <button class="artist-btn" data-artist="reggae">REGGAE</button><br>
-
+<marquee>
+    <div class="song-title" id="songTitle"></div>
+  </marquee>
+    <audio id="audio" controls class="music-player"></audio>
     <!-- Search bar -->
     <input type="text" id="searchBar" class="search-bar" placeholder="Search song...">
 
@@ -201,7 +211,7 @@
       </ul>
     </div>
 
-    <audio id="audio" controls class="music-player"></audio>
+    
     <canvas id="canvas"></canvas>
   </div>
 
@@ -221,6 +231,7 @@
 
     const audioPlayer = document.getElementById("audio");
     const searchBar = document.getElementById("searchBar");
+    const songTitleElement = document.getElementById("songTitle");
 
     let currentPlaylist = [];
     let currentIndex = 0;
@@ -231,61 +242,59 @@
         const selectedArtist = this.getAttribute("data-artist");
 
         // Hide all playlists
-        document.querySelectorAll('.playlist-section').forEach(function (section) {
-          section.querySelector('.playlist').style.display = 'none';
+        document.querySelectorAll(".playlist").forEach((playlist) => {
+          playlist.style.display = "none";
         });
 
-        // Show the selected playlist and attach event listeners
-        if (selectedArtist) {
-          const playlist = document.getElementById(selectedArtist).querySelector('.playlist');
-          playlist.style.display = 'block';
-          currentPlaylist = Array.from(playlist.querySelectorAll('li')); // Store current playlist
-          currentIndex = 0; // Reset index
+        // Show selected playlist
+        document.getElementById(selectedArtist).querySelector(".playlist").style.display = "block";
+        currentPlaylist = Array.from(document.getElementById(selectedArtist).querySelectorAll("li"));
+        currentIndex = 0;
 
-          // Bind click events for the songs in the playlist
-          playlist.querySelectorAll('li').forEach(function (item, index) {
-            item.addEventListener("click", function () {
-              playSong(index);
-            });
-          });
-        }
+        // Load the first song in the playlist
+        loadSong(currentPlaylist[currentIndex]);
       });
     });
 
-    function playSong(index) {
-      const fileSrc = currentPlaylist[index].getAttribute("data-src");
-      const wave = new RenderWave(fileSrc);
-      audioPlayer.src = fileSrc;
+    // Load the song into the audio player
+    function loadSong(songElement) {
+      const songSrc = songElement.getAttribute("data-src");
+      audioPlayer.src = songSrc;
+      songTitleElement.textContent = songElement.textContent;
       audioPlayer.play();
-      currentIndex = index;
-
-      audioPlayer.ontimeupdate = function () {
-        const percent = this.currentTime / this.duration;
-        wave.drawTimeline(percent);
-      };
-
-      audioPlayer.onended = function () {
-        playNext();
-      };
+      renderWave(songSrc); // Call to render the wave
     }
 
-    function playNext() {
-      currentIndex = (currentIndex + 1) % currentPlaylist.length;
-      playSong(currentIndex);
-    }
+    // Event listener for song selection
+    document.querySelectorAll(".playlist li").forEach((songElement) => {
+      songElement.addEventListener("click", function () {
+        loadSong(this);
+      });
+    });
 
-    // Search bar functionality
-    searchBar.addEventListener('input', function () {
-      const searchText = this.value.toLowerCase();
-      currentPlaylist.forEach(function (item) {
-        const songName = item.textContent.toLowerCase();
-        if (songName.includes(searchText)) {
-          item.style.display = ''; // Show if match
+    // Search functionality
+    searchBar.addEventListener("input", function () {
+      const searchTerm = this.value.toLowerCase();
+      currentPlaylist.forEach((songElement) => {
+        if (songElement.textContent.toLowerCase().includes(searchTerm)) {
+          songElement.style.display = "block";
         } else {
-          item.style.display = 'none'; // Hide if no match
+          songElement.style.display = "none";
         }
       });
     });
+
+    // Handle audio end event to play the next song
+    audioPlayer.addEventListener("ended", function () {
+      currentIndex = (currentIndex + 1) % currentPlaylist.length; // Loop back to the start
+      loadSong(currentPlaylist[currentIndex]);
+    });
+
+    // Function to render wave (dummy implementation)
+    function renderWave(src) {
+      const render = new RenderWave(src);
+      // Call a method to actually draw the wave here if needed
+    }
   </script>
 </body>
 </html>
