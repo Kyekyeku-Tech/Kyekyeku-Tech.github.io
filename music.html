@@ -260,7 +260,7 @@
     function loadSong(songElement) {
       const songSrc = songElement.getAttribute("data-src");
       audioPlayer.src = songSrc;
-      songTitleElement.textContent = songElement.textContent;
+      songTitleElement.textContent = `Now playing: ${songElement.textContent} on Kyekyeku-tech`;
       audioPlayer.play();
       renderWave(songSrc); // Call to render the wave
     }
