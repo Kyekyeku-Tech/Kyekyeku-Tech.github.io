@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kyekyeku-Tech Calc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        form {
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, select {
+            width: 100%;
+            padding: 3px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+    table, th, td {
+        border: 5px solid #f30505;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+  
+    input[name^="quantity_"], select[name^="quantity_"] {
+        width: 60px;
+    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        table, th, td {
+            border: 1px solid #ccc6e6;
+        }
+        th, td {
+            padding: 3px;
+            text-align: left;
+        }
+        th {
+            background-color: #f12703;
+            color: #f0f3f5;
+        }
+        #grandTotal {
+            font-weight: bold;
+            color: green;
+        }
+        button {
+            padding: 15px;
+            background-color: #5c25f5;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5053ec;
+        }
+       a.call-office, a.send-sms, a.send-email, a.send-whatsapp {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+  
+        a.call-office {
+            background-color: #00ff62;
+        }
+  
+        a.call-office:hover {
+            background-color: #4fa785;
+        }
+  
+        a.send-sms {
+            background-color: #00aeff;
+            color: #e77c7c;
+            margin-left: 10px;
+        }
+  
+        a.send-sms:hover {
+            background-color: #bee0d3;
+        }
+  
+        a.send-email {
+            background-color: #00eeff;
+            color: #080808;
+            margin-left: 10px;
+        }
+  
+        a.send-email:hover {
+            background-color: #00b36e;
+        }
+  
+        a.send-whatsapp {
+            background-color: #0df161;
+            margin-left: 10px;
+        }
+  
+        label[for="FinalTotal"] strong {
+              color: blue;
+          }
+        h2 {
+            color: blue;
+        }
+a[href^="go:"] {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #5c25f5;
+    border: none;
+    cursor: pointer;
+}
+
+a[href^="go:"]:hover {
+    background-color: #5053ec; 
+}
+
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/+233545454000"><h2 Style="color:rgb(214, 79, 17)" class="fa fa-laptop"> KYEKYEKU - FINTECH </h2></a>
+    
+<a href="tel:0545454000"><h2 Style="color:rgb(17, 17, 214)" class="fa fa-phone"> CALL US </h2></a>
+
+    <form id="cashForm" action="https:KYEKYEKU-TECH.STORE" method="post">
+
+        <table>
+            <tr>
+                <th>Cash Denomination</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>GHC 200.00</td>
+                <td><input type="number" name="quantity_GHC200" oninput="calculateTotal('GHC200')"></td>
+                <td id="total_GHC200">0</td>
+            </tr>
+            <tr>
+                <td>GHC 100.00</td>
+                <td><input type="number" name="quantity_GHC100" oninput="calculateTotal('GHC100')"></td>
+                <td id="total_GHC100">0</td>
+            </tr>
+            <tr>
+                <td>GHC 50.00</td>
+                <td><input type="number" name="quantity_GHC50" oninput="calculateTotal('GHC50')"></td>
+                <td id="total_GHC50">0</td>
+            </tr>
+            <tr>
+                <td>GHC 20.00</td>
+                <td><input type="number" name="quantity_GHC20" oninput="calculateTotal('GHC20')"></td>
+                <td id="total_GHC20">0</td>
+            </tr>
+            <tr>
+                <td>GHC 10.00</td>
+                <td><input type="number" name="quantity_GHC10" oninput="calculateTotal('GHC10')"></td>
+                <td id="total_GHC10">0</td>
+            </tr>
+            <tr>
+                <td>GHC 5.00</td>
+                <td><input type="number" name="quantity_GHC5" oninput="calculateTotal('GHC5')"></td>
+                <td id="total_GHC5">0</td>
+            </tr>
+            <tr>
+                <td>GHC 2.00</td>
+                <td><input type="number" name="quantity_GHC2" oninput="calculateTotal('GHC2')"></td>
+                <td id="total_GHC2">0</td>
+            </tr>
+            <tr>
+                <td>GHC 1.00</td>
+                <td><input type="number" name="quantity_GHC1" oninput="calculateTotal('GHC1')"></td>
+                <td id="total_GHC1">0</td>
+            </tr>
+            <tr>
+                <td>GHC 0.50</td>
+                <td><input type="number" name="quantity_GHC0.5" oninput="calculateTotal('GHC0.5')"></td>
+                <td id="total_GHC0.5">0</td>
+            </tr>
+            <tr>
+                <td>GHC 0.20</td>
+                <td><input type="number" name="quantity_GHC0.2" oninput="calculateTotal('GHC0.2')"></td>
+                <td id="total_GHC0.2">0</td>
+            </tr>
+            <tr>
+                <td>GHC 0.10</td>
+                <td><input type="number" name="quantity_GHC0.1" oninput="calculateTotal('GHC0.1')"></td>
+                <td id="total_GHC0.1">0</td>
+            </tr>
+        </table><br>
+            <label for="E-cash"><strong>TOTAL E-CASH :</strong></label>
+            <input type="number" id="E-cash" name="E-CASH" oninput="calculateGrandTotal()">
+            <label for="FinalTotal"><strong>GRANDTOTAL:</strong></label> 
+            <input type="text" id="FinalTotal" name="GRAND TOTAL" readonly><br><br>
+            <label for="FinalTotal"><strong>IN WORDS:</strong></label>
+            <div id="grandTotalWords"></div><br>
+        </form>
+        
+    <script>
+    function calculateTotal(item) {
+        const quantity = document.getElementsByName(`quantity_${item}`)[0].value;
+        const unitPrice = getUnitPrice(item);
+        const total = (quantity * unitPrice).toFixed(2); // Round to two decimal places
+        document.getElementById(`total_${item}`).textContent = total;
+        calculateGrandTotal();
+    }
+
+    function convertAmountToWords(amount) {
+    const ones = ['','one','two','three','four','five','six','seven','eight','nine'];
+    const teens = ['','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+    const tens = ['','ten','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+
+    function convertGroup(num) {
+        const hundred = Math.floor(num / 100);
+        const remainder = num % 100;
+
+        let result = '';
+        if (hundred) {
+            result += `${ones[hundred]} hundred`;
+            if (remainder) {
+                result += ' and ';
+            }
+        }
+
+        if (remainder < 10) {
+            result += ones[remainder];
+        } else if (remainder < 20) {
+            result += teens[remainder - 10];
+        } else {
+            const ten = Math.floor(remainder / 10);
+            const onesDigit = remainder % 10;
+            result += tens[ten] + (onesDigit ? `-${ones[onesDigit]}` : '');
+        }
+
+        return result;
+    }
+
+    function convertAmount(num) {
+    const thousand = Math.floor((num % 1000000) / 1000);
+    const remainder = num % 1000;
+
+    let result = '';
+    if (thousand) {
+        if (thousand === 10) {
+            result += 'Ten Thousand';
+        } else {
+            result += `${convertGroup(thousand)} Thousand`;
+        }
+    }
+    if (remainder) result += ` ${convertGroup(remainder)}`;
+
+    return result.trim();
+}
+    const formattedAmount = convertAmount(Math.floor(amount));
+    const decimalPart = Math.round((amount - Math.floor(amount)) * 100);
+    const formattedDecimal = decimalPart > 0 ? ` and ${convertAmount(decimalPart)} Pesewas` : '';
+
+    // Capitalize the first letter and replace "ghana" with "Ghana"
+    const result = `${formattedAmount.charAt(0).toUpperCase()}${formattedAmount.slice(1)} Ghana Cedis${formattedDecimal} only`;
+
+    return result;
+}
+
+    function calculateGrandTotal() {
+        const itemTotals = document.querySelectorAll('[id^="total_"]');
+        let grandTotal = 0;
+
+        itemTotals.forEach(itemTotal => {
+            grandTotal += parseFloat(itemTotal.textContent);
+        });
+
+        const eCash = parseFloat(document.getElementById('E-cash').value) || 0;
+        grandTotal += eCash;
+
+        const formattedGrandTotal = new Intl.NumberFormat('en-GH', { style: 'currency', currency: 'GHS' }).format(grandTotal);
+
+        document.getElementById('FinalTotal').value = formattedGrandTotal;
+
+        const grandTotalWords = convertAmountToWords(grandTotal);
+        document.getElementById('grandTotalWords').textContent = grandTotalWords;
+    }
+
+    function getUnitPrice(item) {
+        const unitPrices = {
+            'GHC200': 200,
+            'GHC100': 100,
+            'GHC50': 50,
+            'GHC20': 20,
+            'GHC10': 10,
+            'GHC5': 5,
+            'GHC2': 2,
+            'GHC1': 1,
+            'GHC0.5': 0.5,
+            'GHC0.2': 0.2,
+            'GHC0.1': 0.1,
+        };
+        return unitPrices[item];
+    }
+    </script>
+</body>
+</html>
