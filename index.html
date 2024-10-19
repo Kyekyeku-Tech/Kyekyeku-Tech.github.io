@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Laravel App</title>
+</head>
+<body>
+
+    <h1>Welcome to My Laravel App</h1>
+
+    <div id="content">
+        <p>Loading content...</p>
+    </div>
+
+    <script>
+        // Simulate a maintenance mode check
+        function checkMaintenanceMode() {
+            // Assume you have a flag or file that determines maintenance mode
+            let isMaintenance = false; // Simulate the result from checking a maintenance.php file
+
+            if (isMaintenance) {
+                document.getElementById('content').innerHTML = '<h2>We are currently under maintenance. Please try again later.</h2>';
+            } else {
+                loadAppContent();
+            }
+        }
+
+        // Function to load the application content
+        function loadAppContent() {
+            // Simulate loading content like Laravel does with its request/response cycle
+            document.getElementById('content').innerHTML = '<p>Application loaded successfully.</p>';
+
+            // You can add more content or make API calls here if needed
+        }
+
+        // Initialize the app
+        checkMaintenanceMode();
+    </script>
+
+</body>
+</html>
