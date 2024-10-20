@@ -3,39 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Laravel App</title>
+    <title>Maintenance Notice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #ff6f61;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        #countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6f61;
+            margin-top: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
 
-    <h1>Welcome to KYEKYEKU-TECH</h1>
-
-    <div id="content">
-        <p>Loading content...</p>
+    <div class="container">
+        <h1>We're Currently Under Maintenance</h1>
+        <p>Dear valued customers,</p>
+        <p>We apologize for any inconvenience caused. Our website is currently undergoing maintenance and will be back online tomorrow at 8:00 AM. We appreciate your understanding and patience.</p>
+        <p>Time remaining until we're back:</p>
+        <div id="countdown"></div>
     </div>
 
     <script>
-        // Simulate a maintenance mode check
-        function checkMaintenanceMode() {
-            // Assume you have a flag or file that determines maintenance mode
-            let isMaintenance = false; // Simulate the result from checking a maintenance.php file
+        // Set the date we're counting down to (tomorrow at 8:00 AM)
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1); // Set to tomorrow
+        tomorrow.setHours(8, 0, 0, 0); // Set time to 8:00 AM
 
-            if (isMaintenance) {
-                document.getElementById('content').innerHTML = '<h2>We are currently under maintenance. Please try again later.</h2>';
-            } else {
-                loadAppContent();
+        // Update the countdown every 1 second
+        var countdownFunction = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the difference between now and the countdown date
+            var distance = tomorrow - now;
+
+            // Time calculations for days, hours, minutes, and seconds
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="countdown"
+            document.getElementById("countdown").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+
+            // If the countdown is over, display a message
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "We're back online!";
             }
-        }
-
-        // Function to load the application content
-        function loadAppContent() {
-            // Simulate loading content like Laravel does with its request/response cycle
-            document.getElementById('content').innerHTML = '<p>We are currently under maintenance. Please try again later.</p>';
-
-            // You can add more content or make API calls here if needed
-        }
-
-        // Initialize the app
-        checkMaintenanceMode();
+        }, 1000);
     </script>
 
 </body>
