@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <title>kyekyeku-tech.site</title>
+    <title>Get your result pdf from Kyekyeku-tech</title>
     <link rel="stylesheet" href="service.css">
     <link rel="stylesheet" href="kye.css">
     <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/30c032ee516d51ceb456a.jpg">
@@ -132,9 +132,9 @@ text-align: center; /* Center text */
         <input type="hidden" name="x-sheetmonkey-insert-worksheet" value="BECE" />
         <img src="https://ghanahighschools.com/wp-content/uploads/2023/07/IMG_4937-edited-scaled.jpg" alt="flyer image"/>
         <input type="text" id="Recipient_Name" name="Recipient_Name" placeholder="YOUR NAME" required>
-        <input type="tel" id="Phone_Number" name="Phone_Number" placeholder="INDEX NO." required>
-        <input type="text" id="Price" name="Price" placeholder="CONFIRM INDEX NO." required>
-        <input type="tel" id="afaPrice" name="afaPrice" placeholder="EXAM YEAR (eg. 2024)" required>
+        <input type="tel" id="Phone_Number" name="Index No." placeholder="INDEX NO." required>
+        <input type="text" id="Price" name="Index No.2" placeholder="CONFIRM INDEX NO." required>
+        <input type="tel" id="afaPrice" name="Year" placeholder="EXAM YEAR (eg. 2024)" required>
         <input type="text" id="Whatsapp" name="Whatsapp" placeholder="Your Whatsapp Number" required>
         <input type="submit" value="GET YOUR RESULT"><br><br>
     </form>
@@ -147,7 +147,7 @@ document.getElementById('flyerForm').addEventListener('submit', function(event) 
     event.preventDefault(); // Prevent the default form submission
 
     var phoneNumber = document.getElementById("Phone_Number").value;
-    var amount = 23.5 * 100; // Amount in kobo
+    var amount = 0.5 * 100; // Amount in kobo
 
     var handler = PaystackPop.setup({
         key: 'pk_live_fb405d2702a00868ba424f73b9148b7aad07b2b0', // Replace with your public key
@@ -183,7 +183,7 @@ document.getElementById('flyerForm').addEventListener('submit', function(event) 
 
                     // Redirect to the specified URL after a delay
                     setTimeout(function() {
-                        window.location.href = "https://wa.me/+233545454000?text=Hi+Bro--+I+Just+Paid+Premium+Flyer+Kindly+*Confirm*";
+                        window.location.href = "https://wa.me/+233545454000?text=Hello+Kyekyeku-Tech--+I+Just+Paid+BECE+RESULT+Kindly+*Confirm*";
                     }, 2000);
                 } else {
                     Swal.fire({
