@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BECE Result Checker Request</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://ghanahighschools.com/wp-content/uploads/2023/07/IMG_4937-edited-scaled.jpg');
+            padding: 20px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: rgba(8, 24, 248, 0.582);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 6px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 3px solid #f10b0b;
+            border-radius: 4px;
+        }
+        .number-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .number-buttons button {
+            flex: 1;
+            margin: 5px;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .number-buttons button:hover {
+            background-color: #f11c0d;
+        }
+        button[type="submit"] {
+            background-color: #1d0410;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background-color: #e65b0b;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>BECE Result Checker (GHC18.0)</h2>
+    <!-- Flyer image -->
+    <img src="https://ghanahighschools.com/wp-content/uploads/2023/07/IMG_4937-edited-scaled.jpg" alt="flyer image"/>
+
+    <form id="checkerForm">
+        <label for="Phone_Number">Phone Number:</label>
+        <input type="tel" id="Phone_Number" name="Phone_Number" placeholder="Enter your phone number" required>
+
+        <label>Select Number of Result Checkers:</label>
+        <div class="number-buttons">
+            <!-- Number selection buttons -->
+            <button type="button" data-quantity="1">1</button>
+            <button type="button" data-quantity="2">2</button>
+            <button type="button" data-quantity="3">3</button>
+            <button type="button" data-quantity="4">4</button>
+            <button type="button" data-quantity="5">5</button>
+            <button type="button" data-quantity="6">6</button>
+            <button type="button" data-quantity="7">7</button>
+            <button type="button" data-quantity="8">8</button>
+            <button type="button" data-quantity="9">9</button>
+            <button type="button" data-quantity="10">10</button>
+        </div>
+
+        <!-- Hidden input to store the selected quantity -->
+        <input type="hidden" id="quantity" name="quantity" value="">
+
+        <button type="submit">Buy Now</button>
+    </form>
+</div>
+
+<script>
+document.querySelectorAll('.number-buttons button').forEach(function(button) {
+    button.addEventListener('click', function() {
+        var selectedQuantity = this.getAttribute('data-quantity');
+        document.getElementById('quantity').value = selectedQuantity;
+        Swal.fire({
+            icon: 'info',
+            title: 'Selection Made',
+            text: 'You selected ' + selectedQuantity + ' result checker(s)'
+        });
+    });
+});
+
+document.getElementById('checkerForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    var phoneNumber = document.getElementById("Phone_Number").value;
+    var quantity = document.getElementById("quantity").value;
+
+    if (!quantity) {
+        Swal.fire({
+            icon: 'error',
+            title: 'No Selection',
+            text: 'Please select the number of result checkers.'
+        });
+        return; // Stop form submission if no quantity is selected
+    }
+
+    var amount = 18 * quantity * 100; // Amount in kobo (Paystack works in the smallest currency unit)
+
+    var handler = PaystackPop.setup({
+        key: 'pk_live_fb405d2702a00868ba424f73b9148b7aad07b2b0', // Replace with your public key
+        email: 'safooppong121@gmail.com', // User's email or your business email
+        amount: amount, // Total amount calculated
+        currency: 'GHS',
+        ref: 'KYEKYEKU-' + Math.floor((Math.random() * 1000000000) + 1), // Unique transaction reference
+        metadata: {
+            custom_fields: [{
+                display_name: "Phone Number",
+                variable_name: "phone_number",
+                value: phoneNumber
+            }]
+        },
+        callback: function(response) {
+            // Payment successful, show alert
+            Swal.fire({
+                icon: 'success',
+                title: 'Payment Successful',
+                text: 'Transaction Reference: ' + response.reference
+            });
+
+            // Handle form submission to SheetMonkey
+            var form = event.target;
+            var formData = new FormData(form);
+            formData.append('transaction_ref', response.reference);
+
+            // Send form data to SheetMonkey
+            fetch('https://api.sheetmonkey.io/form/s2tNaVG3kzyiw91cPx6AyC', {
+                method: "POST",
+                body: formData
+            }).then(function(response) {
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Form Submitted',
+                        text: 'Your request has been submitted successfully!'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Submission Failed',
+                        text: 'There was a problem submitting your request.'
+                    });
+                }
+            });
+        },
+        onClose: function() {
+            // Payment popup closed
+            Swal.fire({
+                icon: 'warning',
+                title: 'Payment Canceled',
+                text: 'You canceled the payment process.'
+            });
+        }
+    });
+
+    handler.openIframe();
+});
+</script>
+
+</body>
+</html>
