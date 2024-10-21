@@ -1,0 +1,178 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 80px;
+    background-image: url('https://i.postimg.cc/k4RXymQg/blur.jpg');
+    background-size: cover;
+}
+
+h2 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.profile-picture {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 0rem;
+    box-shadow: 0 0 15px rgba(20, 0, 0, 0.973);
+    max-width: 100%; /* Ensures the image doesn't overflow on small screens */
+    height: auto;    /* Adjusts height automatically to maintain aspect ratio */
+    position: relative;
+}
+
+.countdown-container {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    max-width: 80%;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.countdown-item {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.countdown-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.countdown-label {
+    font-size: 1.1rem;
+    color: #240101;
+}
+
+.wish-button {
+    background-color: #25D366;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+.wish-button:hover {
+    background-color: #1EBE4F;
+}
+
+.birthday-wish {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 80%;
+    text-align: center;
+    margin: 1rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s, visibility 0s 1s;
+}
+
+.birthday-wish.visible {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+.birthday-wish h3 {
+    margin: 0;
+    font-size: 1.7rem;
+    color: #333;
+}
+
+.birthday-wish p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.birthday-animation {
+    display: none;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+}
+
+.birthday-animation.visible {
+    display: block;
+}
+
+.advance_wish {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgb(56, 2, 248);
+    max-width: 80%;
+    text-align: center;
+   margin-top: 1rem;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 600px) {
+body {
+margin: 10px; /* Remove the margin on mobile */
+padding-top: 150px; /* Add padding to make space for the profile picture */
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+position: relative; /* Ensure child elements are positioned relative to this */
+}
+
+.profile-picture {
+position: absolute;
+top: 10px;
+left: 10px;
+width: 120px;
+height: 120px;
+box-shadow: none; /* Optionally remove box-shadow on mobile */
+}
+
+h2 {
+font-size: 1.5rem;
+margin-top: 0; /* Adjust to prevent overlap with the profile picture */
+}
+
+.countdown-container {
+margin-top: 1rem;
+margin-bottom: 10px;
+}
+
+.countdown-item {
+padding: 0.5rem;
+}
+
+.countdown-number {
+font-size: 1.5rem;
+}
+
+.wish-button {
+font-size: 0.8rem;
+padding: 0.5rem 1rem;
+}
+}

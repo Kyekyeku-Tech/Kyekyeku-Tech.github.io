@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://telegra.ph/file/30c032ee516d51ceb456a.jpg">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-image: url('https://i1.sndcdn.com/artworks-000198161863-1uvpfw-t500x500.jpg');
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .music-player {
+      margin: 20px 0;
+    }
+
+    h2 {
+      color: blue;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      color: #2d3748;
+      margin-bottom: 30px;
+    }
+
+    .playlist {
+      list-style: none;
+      padding: 0;
+      display: none;
+    }
+
+    .playlist li {
+      margin: 5px 0;
+      padding: 10px;
+      background-color: rgba(0, 9, 10, 0.671);
+      color: #05e8f8;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .playlist li:hover {
+      background-color: #f13405d2;
+      color: white;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 2px solid #1b0388;
+      background-color: #02010a;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #1b0388;
+    }
+
+    canvas {
+      width: 100%;
+      height: 150px;
+      background: transparent;
+      margin-top: 20px;
+      box-shadow: inset 0px 0px 25px -15px #0289f8;
+      border-radius: 5px;
+    }
+
+    .search-bar {
+      margin-bottom: 20px;
+      padding: 10px;
+      font-size: 16px;
+      width: 80%;
+      border: 2px solid #f2f1f5;
+      border-radius: 5px;
+      background-color: #02010a;
+      color: white;
+    }
+    .song-title {
+      font-size: 20px;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.486);
+      color: rgb(250, 213, 3);
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h2>KYEKYEKU-TECH FREE MUSIC</h2>
+    <h1 style="color: #f709097c;">Enjoy Our free Music</h1>
+
+    <!-- Buttons for Artist Selection -->
+    <button class="artist-btn" data-artist="hiplife">GHANA HITS SONGS</button>
+    <button class="artist-btn" data-artist="highlife">GOSPEL/WORSHIP</button>
+    <button class="artist-btn" data-artist="reggae">REGGAE</button><br>
+<marquee>
+    <div class="song-title" id="songTitle"></div>
+  </marquee>
+    <audio id="audio" controls class="music-player"></audio>
+    <!-- Search bar -->
+    <input type="text" id="searchBar" class="search-bar" placeholder="Search song...">
+    <div id="hiplife" class="playlist-section">
+      <ul class="playlist">
+        <li data-src="https://ghnation.net/wp-content/uploads/2021/11/Daddy-Lumba-Ankwanoma_ghnation.net_.mp3">Ankwanoma-Daddy Lumba</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/06/Daddy-Lumba-Sika-asem.mp3">Sika_Asem-Daddy Lumba</li>
+        <li data-src="https://ghnation.net/wp-content/uploads/2021/11/Daddy-Lumba-Theresa_ghnation.net_.mp3">Theresah-Daddy Lumba</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2024/09/Fameye-Very-Soon.www_.Ghanasongs.com_.mp3">Very_Soon-Fameye</li>
+       <li data-src="https://cdn.trendybeatz.com/audio/Amerado-Abotr3-Ft-Black-Sherif-(TrendyBeatz.com).mp3">Abotr3-Amerado</li>
+        <li data-src="https://www.naijaflavour.com/mp3manager/uploads/2024/07//Amerado%20%E2%80%93%20Date%20Rush_(Naijaflavour.com).mp3">Date Rush-Amerado</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Ankonam-(TrendyBeatz.com).mp3">Ankonam-Black Sherif</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2022/10/Black-Sherif-45-www.Ghanasong.com_.mp3">Black-Sherif-45</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/11/Black-Sherif-x-Samsney-Gold-Digga.mp3_GhanaSongs.com_.mp3">Black-Sherif-Gold Diga</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/12/Black-Sherif-Ft-Burna-Boy-%E2%80%93-2nd-Sermon-Remix.mp3">Black Sherif Ft Burna Boy – 2nd Sermon Remix</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2022/10/Black-Sherif-Konongo-Zongo-www.Ghanasong.com_.mp3">Black-Sherif-Konongo-Zongo</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Money-(TrendyBeatz.com).mp3">Black-Sherif-Money</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Shut-Up-(TrendyBeatz.com).mp3">Black-Sherif-Shut-Up</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2022/09/Black-Sherif-Soja-www.Ghanasong.com_.mp3">Black-Sherif-Soja</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/11/SmallGod-Ft-Morian-Doll-x-Vic-Mensa-x-Black-Sherif-x-Kwaku-DMC-%E2%80%93-Holy-F4K.mp3_GhanaSongs.com_.mp3">SmallGod Ft  Black Sherif x Kwaku DMC</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/11/Kiddblack-Ft-Black-Sherif-Assignment.mp3_GhanaSongs.com_.mp3">Kiddblack Ft Black Sherif – Assignment</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Black-Sherif-Yaya-(TrendyBeatz.com).mp3">Black-Sherif-Yaya-</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2024/08/AratheJay-Ft-Black-Sherif-Jesus-Christ-2.www_.Ghanasongs.com_.mp3">AratheJay Ft Black Sherif – Jesus</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/KiDi-Ft-Black-Sherif-Lomo-Lomo-(TrendyBeatz.com).mp3">KiDi-Lomo-Lomo-ft-Black-Sherif</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2023/10/King-Paluta-All-My-Lifewww.Ghanasong.com_.mp3">King-Paluta-All-My-Life</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2024/02/King-Paluta-Aseda.www_.ghanasongs.com_.mp3">King-Paluta-Aseda</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2024/07/King-Paluta-Makoma.wwwGhanasongs.com_.mp3">King-Paluta-Makoma</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/King-Promise-Paris-(TrendyBeatz.com).mp3">King-Promise-Paris</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2023/05/King-Promise-Terminator-www.Ghanasong.com_.mp3">King-Promise-Terminator</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Kofi-Kinaata-Abonsam-(TrendyBeatz.com).mp3">Kofi-Kinaata-Abonsam</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/04/Kofi-Kinaata-Thy-Grace-www.Ghanasong.com_.mp3">Kofi-Kinaata-Thy Grace</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2020/04/Kofi-Kinaata-%E2%80%93-Behind-The-Scenes-Prod-By-TwoBars-www.Ghanasongs.com_.mp3">Kofi-Kinaata-Behind the scenes</li>
+        <li data-src="https://www.ghanasongs.com/wp-content/uploads/2019/06/Kofi-Kinaata-%E2%80%93-Adam-And-Eve-www.Ghanasongs.com_-1.mp3">Kofi Kinaata – Adam And Eve</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2020/12/Kofi-Kinaata-Ft.-Patoranking-%E2%80%93-Something-Nice-www.Ghanasong.com_.mp3">Kofi Kinaata Ft. Patoranking – Something Nice</li>
+        <li data-src="https://www.ghanasong.com/wp-content/uploads/2021/02/Kofi-Kinaata-%E2%80%93-Chocolate-Prod.-By-Two-bars.mp3">Kofi Kinaata – Chocolate</li>
+        <li data-src="Kuami-Eugene-Beifour.mp3">Kuami-Eugene-Beifour</li>
+        <li data-src="Kuami-Eugene-Canopy.mp3">Kuami-Eugene-Canopy</li>
+        <li data-src="Kuami-Eugene-Demigod.mp3">Kuami-Eugene-Demigod</li>
+        <li data-src="Kuami-Eugene-Mama.mp3">Kuami-Eugene-Mama</li>
+        <li data-src="Kuami-Eugene-Monica.mp3">Kuami-Eugene-Monica</li>
+        <li data-src="Kuami-Eugene-Scolom.mp3">Kuami-Eugene-Scolom</li>
+        <li data-src="Kweku-Darlington-Grateful-To-Your-Ex.mp3">Kweku-Darlington-Grateful-To-Your-Ex</li>
+        <li data-src="Kweku-Smoke-Hope.mp3">Kweku-Smoke-Hope</li>
+        <li data-src="Kweku-Smoke-Intro.mp3">Kweku-Smoke-Intro</li>
+        <li data-src="Kweku-Smoke-Kweku-Smoke.mp3">Kweku-Smoke-Kweku-Smoke</li>
+        <li data-src="Kweku-Smoke-MO-SMOKE.mp3">Kweku-Smoke-MO-SMOKE</li>
+        <li data-src="KWESI-AMEWUGA-Action.mp3">KWESI-AMEWUGA-Action</li>
+        <li data-src="KWESI-AMEWUGA-Ase3.mp3">KWESI-AMEWUGA-Ase3</li>
+        <li data-src="KWESI-AMEWUGA-Kwesi-Bdamfo.mp3">KWESI-AMEWUGA-Kwesi-Bdamfo</li>
+        <li data-src="KWESI-AMEWUGA-Mokasa.mp3">KWESI-AMEWUGA-Mokasa</li>
+        <li data-src="KWESI-AMEWUGA-Prepare.mp3">KWESI-AMEWUGA-Prepare</li>
+        <li data-src="KWESI-AMEWUGA-TRAP.mp3">KWESI-AMEWUGA-TRAP</li>
+        <li data-src="Omah-Lay-Holy-Ghost.mp3">Omah-Lay-Holy-Ghost</li>
+        <li data-src="Omah-Lay-Soso.mp3">Omah-Lay-Soso</li>
+        <li data-src="Rema-Holiday.mp3">Rema-Holiday</li>
+        <li data-src="Sarkodie-Confam.mp3">Sarkodie-Confam</li>
+        <li data-src="Sarkodie-Loyalty.mp3">Sarkodie-Loyalty</li>
+        <li data-src="Sarkodie-Oofeetso.mp3">Sarkodie-Oofeetso</li>
+        <li data-src="Sarkodie-Otan.mp3">Sarkodie-Otan</li>
+        <li data-src="Sarkodie-Try-Me.mp3">Sarkodie-Try-Me</li>
+        <li data-src="Shatta-Wale-Gringo.mp3">Shatta-Wale-Gringo</li>
+        <li data-src="Stonebwoy">BEST of Stonebwoy</li>
+        <li data-src="dasebre.mp3">BEST of Dasebre Gyamena</li>
+      </ul>
+    </div>
+
+    <div id="highlife" class="playlist-section">
+      <ul class="playlist">
+        <li data-src="https://ghanagospelsongs.com/wp-content/uploads/2020/06/Christiana-Love-Beko-Mame-Worship-www.GhanaGospelSongs.com_.mp3">Christiana-Love-Beko-Mame-Worship</li>
+        <li data-src="https://ghanagospelsongs.com/wp-content/uploads/2020/06/Christiana-Love-Mate-Wase-Worship-www.GhanaGospelSongs.com_.mp3">Christiana-Love-Mate-Wase-Worship</li>
+        <li data-src="https://ghanagospelsongs.com/wp-content/uploads/2020/02/Cindy-Thompson-Awurade-Kasa-Worship-www.GhanaGospelSongs.com_.mp3">Cindy-Thompson-Awurade-Kasa worship</li>
+        <li data-src="https://ghanagospelsongs.com/wp-content/uploads/2022/01/Ghana-Worship-Songs-Mix-2021-%E2%80%93-Early-Morning-Devotion-Worship-Songs-For-Prayer-www.GhanaGospelSongs.com_.mp3">Worship-mix-Early-Morning-Devotion-Worship-Songs</li>
+        <li data-src="MC-Abraham-Cha-Cha.mp3">MC-Abraham-Cha-Cha</li>
+        <li data-src="Mc-Abraham-Ebeye-yie.mp3">Mc-Abraham-Ebeye-yie</li>
+        <li data-src="Mc-Abraham-Nhyira-ne-nnome.mp3">Mc-Abraham-Nhyira-ne-nnome</li>
+        <li data-src="Mc-Abraham-Yesu-nnim-mu-a-enye-yie.mp3">Mc-Abraham-Yesu-nnim-mu-a-enye-yie</li>
+        <li data-src="Yaw-Sarpong-Adwendwene.mp3">Yaw-Sarpong-Adwendwene</li>
+        <li data-src="Yaw-Sarpong-and-Asomafo-Dua-Esi-Asobonten-Ho.mp3">Yaw-Sarpong-and-Asomafo-Dua-Esi-Asobonten-Ho</li>
+        <li data-src="Florence-Obinim-Osoro-Ne-Yefie.mp3">Florence-Obinim-Osoro-Ne-Yefie</li>
+        <li data-src="Yaw-Sarpong-Asomafo-–-Aseda-Ndwom-Ft-Kweku-Gyasi.mp3">Yaw-Sarpong-Asomafo-–-Aseda-Ndwom-Ft-Kweku-Gyasi</li>
+        <li data-src="https://cdn.trendybeatz.com/audio/Diana-Hamilton-Wasem-Your-Word-(TrendyBeatz.com).mp3">Diana-Hamilton-–-W’asem</li>
+        <li data-src="https://files.ceenaija.com/wp-content/uploads/music/2023/01/Anita_Afriyie_-_Adehye_Mogya_CeeNaija.com_.mp3">Anita-Afriyie-Adehye Mogya</li>
+        <li data-src="https://files.ceenaija.com/wp-content/uploads/music/2023/05/Nacee_-_Aseda_CeeNaija.com_.mp3">Aseda by Nacee</li>
+      </ul>
+    </div>
+
+    <div id="reggae" class="playlist-section">
+      <ul class="playlist">
+        <li data-src="Lucky-Dube-I-Want-To-Know-What-Love-Is.mp3">Lucky-Dube-I-Want-To-Know-What-Love-Is</li>
+        <li data-src="Lucky-Dube-Remember-Me.mp3">Lucky-Dube-Remember-Me</li>
+        <li data-src="Lucky-Dube-Slave.mp3">Lucky-Dube-Slave</li>
+        <li data-src="Lucky-Dube-Teach-the-World.mp3">Lucky-Dube-Teach-the-World</li>
+        <li data-src="Lucky-Dube-The-Way-It-Is.mp3">Lucky-Dube-The-Way-It-Is</li>
+        <li data-src="Lucky-Dube-Respect.mp3">Lucky-Dube-Respect</li>
+        <li data-src="Lucky-Dube-Romeo.mp3">Lucky-Dube-Romeo</li>
+      </ul>
+    </div>
+
+    
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <script>
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
+
+    class RenderWave {
+      constructor(src) {
+        this.src = src;
+        this.context = new AudioContext();
+      }
+
+      drawTimeline(percent) {
+        // Dummy function for the wave drawing
+      }
+    }
+
+    const audioPlayer = document.getElementById("audio");
+    const searchBar = document.getElementById("searchBar");
+    const songTitleElement = document.getElementById("songTitle");
+
+    let currentPlaylist = [];
+    let currentIndex = 0;
+
+    // Bind events for buttons
+    document.querySelectorAll(".artist-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const selectedArtist = this.getAttribute("data-artist");
+
+        // Hide all playlists
+        document.querySelectorAll(".playlist").forEach((playlist) => {
+          playlist.style.display = "none";
+        });
+
+        // Show selected playlist
+        document.getElementById(selectedArtist).querySelector(".playlist").style.display = "block";
+        currentPlaylist = Array.from(document.getElementById(selectedArtist).querySelectorAll("li"));
+        currentIndex = 0;
+
+        // Load the first song in the playlist
+        
+      });
+    });
+
+    // Load the song into the audio player
+    function loadSong(songElement) {
+      const songSrc = songElement.getAttribute("data-src");
+      audioPlayer.src = songSrc;
+      songTitleElement.textContent = `Now playing: ${songElement.textContent} on Kyekyeku-tech`;
+      audioPlayer.play();
+      renderWave(songSrc); // Call to render the wave
+    }
+
+    // Event listener for song selection
+    document.querySelectorAll(".playlist li").forEach((songElement) => {
+      songElement.addEventListener("click", function () {
+        loadSong(this);
+      });
+    });
+
+    // Search functionality
+    searchBar.addEventListener("input", function () {
+      const searchTerm = this.value.toLowerCase();
+      currentPlaylist.forEach((songElement) => {
+        if (songElement.textContent.toLowerCase().includes(searchTerm)) {
+          songElement.style.display = "block";
+        } else {
+          songElement.style.display = "none";
+        }
+      });
+    });
+
+    // Handle audio end event to play the next song
+    audioPlayer.addEventListener("ended", function () {
+      currentIndex = (currentIndex + 1) % currentPlaylist.length; // Loop back to the start
+      loadSong(currentPlaylist[currentIndex]);
+    });
+
+    // Function to render wave (dummy implementation)
+    function renderWave(src) {
+      const render = new RenderWave(src);
+      // Call a method to actually draw the wave here if needed
+    }
+  </script>
+</body>
+</html>

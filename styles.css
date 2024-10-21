@@ -1,0 +1,232 @@
+/* Reset some basic elements for better consistency across browsers */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Logo Styling */
+.logo img {
+    max-width: 70px;
+    height: auto;
+}
+/* Header and Navigation */
+header {
+    background: rgba(0, 0, 0, 0.452);
+    box-shadow: 0 5px 5px rgba(2, 19, 0, 0.781);
+    padding: 10px 0;
+    position: flex;
+    top: 0;
+    z-index: 1000;
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: transparent;
+}
+/* Navigation Styling */
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+#nav-menu {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+#nav-menu li {
+    margin-left: 0px;
+}
+
+#nav-menu li a {
+    text-decoration: none;
+    color: #fcfafa;
+    font-weight: 500;
+    padding: 8px 15px;
+    transition: color 0.3s ease;
+}
+
+#nav-menu li a:hover {
+    color: #fbfcfd;
+    background-color: #007bff;
+}
+
+#btn {
+    background-color: #007bff;
+    color: white;
+    border-radius: 20px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+#btn:hover {
+    background-color: #00060c;
+    color: white;
+}
+.testimonials {
+    padding: 50px 20px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.testimonials h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #0408fc;
+}
+
+.testimonial-slider {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonial-slide {
+    display: none;
+    padding: 20px;
+    text-align: center;
+}
+
+.testimonial-slide img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.testimonial-slide blockquote {
+    font-size: 1.2em;
+    font-style: italic;
+    margin-bottom: 10px;
+    color: #fffefe;
+}
+
+.testimonial-slide p {
+    font-weight: bold;
+    color: #020008;
+}
+
+/* Show the first slide initially */
+.testimonial-slide:first-child {
+    display: block;
+}
+
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 20px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+footer nav ul li {
+    margin: 0;
+}
+
+footer nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+footer nav ul li a:hover {
+    color: #007bff;
+}
+
+.newsletter {
+    margin-top: 20px;
+}
+
+.newsletter h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.newsletter form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.newsletter button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .services {
+        flex-direction: column;
+    }
+
+    .menu-toggle {
+        display: block;
+        align-items: end;
+    }
+
+    #nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #0800009d;
+        padding: 20px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
+    #nav-menu.mobile-menu {
+        display: flex;
+    }
+
+    #nav-menu li {
+        margin: 5px 0;
+    }
+
+    .header-container .logo img {
+        display: none;
+    }
+}
+

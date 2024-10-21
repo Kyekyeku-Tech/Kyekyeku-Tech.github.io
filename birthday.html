@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyekyeku-Tech Birthday</title>
+    <link rel="stylesheet" href="birthday.css">
+</head>
+<body>
+    <img src="https://i.postimg.cc/qRxjQ9sp/kye-enhanced.jpg" alt="Profile Picture" class="profile-picture">
+    <h2>Kyekyeku-Tech Birthday 🎁</h2>
+    <div class="countdown-container">
+        <div id="countdown">
+            <div class="countdown-item">
+                <span id="days" class="countdown-number">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="countdown-item">
+                <span id="hours" class="countdown-number">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes" class="countdown-number">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds" class="countdown-number">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="advance_wish" id="advancewish">
+        <h2>Happy Birthday in Advance!</h2>
+        <p>Thank you for taking the time to check my birthday. Don’t forget to come back and send your wishes on the 24th of September! 🍾</p>
+    </div>
+
+    <div class="birthday-wish" id="birthdayMessage">
+        <h3>Happy Birthday, 🍾Oppong Safo!</h3>
+        <p>Thank you for celebrating this special day with me! Be the first to enjoy a 10GB internet bundle by sending your birthday wishes!</p>
+        <a href="https://wa.me/+233545454000?text=Hello%20Safo,%20Happy%20Birthday%20to%20you%20have%20a%20blessful%20birthday" class="wish-button" target="_blank">Send Birthday Wish 🍾</a>
+    </div>
+</div>
+    <img src="https://i.gifer.com/YGg4.gif" alt="Birthday Animation" class="birthday-animation" id="birthdayAnimation">
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const targetDate = new Date(now.getFullYear(), 8, 24); // 24th September
+
+            if (now > targetDate) {
+                targetDate.setFullYear(targetDate.getFullYear() + 1);
+            }
+
+            const timeDifference = targetDate - now;
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+            const advanceWish = document.getElementById('advancewish');
+            const birthdayMessage = document.getElementById('birthdayMessage');
+            const birthdayAnimation = document.getElementById('birthdayAnimation');
+
+            const isBeforeBirthday = now.getMonth() === 8 && now.getDate() < 24;
+            const isBirthday = now.getMonth() === 8 && now.getDate() === 24;
+            const isWithinBirthdayHours = now.getHours() >= 0 && now.getHours() < 24;
+
+            if (isBeforeBirthday) {
+                advanceWish.style.opacity = "1";
+                birthdayMessage.classList.remove('visible');
+                birthdayAnimation.classList.remove('visible');
+            } else if (isBirthday && isWithinBirthdayHours) {
+                advanceWish.style.opacity = "0";
+                birthdayMessage.classList.add('visible');
+                birthdayAnimation.classList.add('visible');
+            } else {
+                advanceWish.style.opacity = "0";
+                birthdayMessage.classList.remove('visible');
+                birthdayAnimation.classList.remove('visible');
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>

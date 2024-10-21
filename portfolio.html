@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safo Oppong Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.postimg.cc/W49DwtD2/kye.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+    
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('https://i.postimg.cc/yYwHqKR7/R1.jpg');
+
+            color: #f0f0f0;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.76);
+            padding: 15px 20px;
+            text-align: center;
+            position: fi;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: right;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: overline;
+            font-size: 12pxx;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #fafbfc;
+            background-color: red;
+            border-radius: 5px;
+        }
+        /* Profile Image in Header (for mobile) */
+        .header-profile-image {
+            display: none;
+            margin-bottom: 10px;
+        }
+
+        .header-profile-image img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #ff1100;
+            padding: 10px;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 100px 20px 50px;
+            background: linear-gradient(145deg, #01002e98, #0a0a0ab2);
+            flex-wrap: wrap;
+        }
+
+        .profile-image img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid #00ffff;
+            padding: 10px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image img:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-content {
+            max-width: 600px;
+        }
+
+        .profile-content h1 {
+            font-size: 36px;
+        }
+
+        .profile-content h2 {
+            font-size: 24px;
+            color: #00ffff;
+        }
+
+        .profile-content p {
+            margin: 20px 0;
+        }
+
+        .cv-button {
+            padding: 12px 25px;
+            background-color: #00ffff;
+            color: #1a1a1a;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cv-button:hover {
+            background-color: #01000a;
+            color: white;
+        }
+
+        /* Grid Sections */
+        section {
+            padding: 50px 20px;
+        }
+
+        h2 {
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .grid-item {
+            background: linear-gradient(145deg, #121435d3, #0a0a0aef);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(235, 7, 7, 0.89);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(224, 4, 4, 0.856);
+        }
+
+        .grid-item h3 {
+            color: #f34122;
+        }
+        .grid-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(247, 202, 2, 0.822);
+}
+
+.grid-item a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #00ffff;
+    color: #1a1a1a;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.grid-item a:hover {
+    background-color: #01000a;
+    color: white;
+}
+@media (max-width: 768px) {
+    .grid-item img {
+        width: 100%;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+        /* Contact Section */
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        form input, form textarea {
+            padding: 15px;
+            background-color: #131212;
+            border: 2px solid;
+            border-color: white;
+            color: #f50505;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        form button {
+            grid-column: span 2;
+            padding: 15px;
+            background-color: #0004ff;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #008080;
+        }
+        .counters-section-type-2 {
+  background-color: #0c0c0c94; /* Light gray background */
+  padding: 0px 0;
+}
+
+.counter-box {
+  padding: 10px;
+  margin: 10px 0;
+  border: 4px solid #f6fafa;
+  border-radius: 20px;
+  background-color: transparent;
+  display: ruby;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+  text-align: center; /* Ensures everything inside the box is centered */
+  max-width: 60%;
+}
+
+.counter-box:hover {
+  transform: scale(1.05);
+}
+
+.title-counter {
+  font-size: 18px;
+  color: #f7f3f3;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center; /* Center text */
+}
+
+.prop-obj {
+  font-size: 28px;
+  color: rgb(0, 247, 255);
+  font-weight: 600;
+  text-align: center; /* Center number */
+}
+
+.border-bottom-simple {
+  border-bottom: 2px solid #080000;
+}
+
+.border-top-simple {
+  border-top: 2px solid #dedede;
+}
+.social-icons {
+    display: flex; /* Align icons in a row */
+    justify-content: center; /* Center the icons */
+    align-items: center; /* Center vertically */
+    margin: 20px 0; /* Space above and below */
+}
+
+.social-icons a {
+    margin: 0 10px; /* Space between icons */
+    text-decoration: none; /* Remove underline */
+    transition: transform 0.3s, color 0.3s; /* Smooth transition effects */
+}
+
+.social-icons :hover {
+    transform: scale(1.2); /* Scale up on hover */
+    color: rgb(0, 47, 255); /* Change color on hover */
+}
+
+.social-icons i {
+    font-size: 26px; /* Keep font size consistent */
+    color: rgb(255, 17, 0); /* Default color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .counter-box {
+    margin: 10px 0;
+  }
+  nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 5px;
+        }
+}
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            /* Show profile image in header for mobile */
+            .header-profile-image {
+                display: block;
+            }
+
+            .profile-section .profile-image {
+                display: none; /* Hide profile image from the profile section */
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px; /* Adjust padding to fit header */
+            }
+
+            .profile-content {
+                margin-top: 20px;
+            }
+
+            form {
+                grid-template-columns: 1fr;
+            }
+        }
+        footer {
+    background-color: #070202b7;
+    color: white;
+    padding: 40px 20px;
+    margin-top: 50px;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-profile-image">
+            <img src="https://i.postimg.cc/W49DwtD2/kye.jpg" alt="Safo Oppong">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#skills"><i class="fa fa-cog"></i>Skills</a></li>
+                <li><a href="#experience"><i class="fa fa-check"></i>Experience</a></li>
+                <li><a href="#projects"><i class="fa fa-project-diagram"></i>Project</a></li>
+                <li><a href="#contact"><i class="fa fa-envelope"></i>info</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="counters-section-type-2 border-bottom-simple border-top-simple">
+        <div class="container-fluid py-5">
+          <div class="row counters-wrapper justify-content-center text-center">
+            <div class="col-sm-4 col-6 counter-box first-side d-flex flex-column align-items-center">
+              <p class="title-counter">#No of Project</p>
+              <span class="prop-obj prop-obj1" data-count="98">0</span>
+            </div>
+            <div class="col-sm-4 col-6 counter-box second-side d-flex flex-column align-items-center">
+              <p class="title-counter">Users Loved</p>
+              <span class="prop-obj prop-obj2" data-count="556">0</span>
+            </div>
+            <div class="col-sm-4 col-6 counter-box third-side d-flex flex-column align-items-center">
+              <p class="title-counter">Active Project</p>
+              <span class="prop-obj prop-obj3" data-count="24">0</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    <section id="home" class="profile-section">
+        <div class="profile-image">
+            <img src="https://i.postimg.cc/W49DwtD2/kye.jpg" alt="Safo Oppong">
+        </div>
+        <div class="social-icons">
+            <a href="#"><i class='fa fa-facebook'></i></a>
+            <a href="#"><i class='fa fa-whatsapp'></i></a>
+            <a href="#"><i class='fa fa-instagram'></i></a>
+            <a href="#"><i class='fa fa-laptop'></i></a>
+            <a href="#"><i class='fa fa-github'></i></a>
+            <a href="https://github.com/sponsors/Kyekyeku-Tech"><i class='fa fa-briefcase'></i></a>
+        </div>
+        <div class="profile-content">
+            <h1>Hello, I'm Safo Oppong</h1>
+            <h2>Frontend Developer & Software Engineer</h2>
+            <p>A highly motivated and detail-oriented professional with a passion for technology and problem-solving. Dedicated to delivering exceptional results by meeting deadlines and enhancing skills in dynamic environments.</p>
+            <a href="https://github.com/kyekyeku-tech" download>
+                <button class="cv-button">Github Profile</button>
+            </a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>Skills</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <h3>Punctuality</h3>
+                <p>Consistently meets deadlines and delivers tasks on time.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Multitasking</h3>
+                <p>Efficiently manages multiple tasks and projects simultaneously.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Pressure Management</h3>
+                <p>Performs well under pressure while maintaining high-quality standards.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Technical Skills</h3>
+                <p>Data Entry, Microsoft Office Suite (Word, Excel, PowerPoint), Basic Software Development.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2>Work Experience</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <h3>Mobile Agent - MTN Ghana (2018-2020)</h3>
+                <p>Managed mobile money transactions and provided excellent customer service ensuring accuracy in financial operations.</p>
+            </div>
+            <div class="grid-item">
+                <h3>Sales Executive - MTN AYO (2020-2022)</h3>
+                <p>Exceeded sales targets, built strong client relationships, and utilized data entry and Microsoft Office to maintain records.</p>
+            </div>
+            <div class="grid-item">
+                <h3>DSR & Acting Branch Head -Embalinks (2024)</h3>
+                <p>Led sales and distribution operations, managed a team, and utilized advanced Microsoft Office skills for data analysis and reporting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="grid">
+            <div class="grid-item">
+                <h3>The Nelson Foundation Website</h3>
+                <img src="https://i.postimg.cc/g2vqscDQ/Screenshot-2024-10-12-004629.png" alt="The Nelson Foundation Project">
+                <p>This website was developed for The Nelson Foundation to support females with disabilities.</p>
+                <a href="https://thenelsonfoundation.online">View Project</a>
+            </div>
+            
+            <div class="grid-item">
+                <h3>Kyekyeku Tech Website</h3>
+                <img src="https://i.postimg.cc/mgG7Pfsw/Screenshot-2024-10-12-004956.png" alt="kyekyeku-tech Project">
+                <p>This website was developed purposely to sell internet bundle online.</p>
+                <a href="http://kyekyeku-tech.site">View Project</a>
+            </div>
+            <div class="grid-item">
+                <h3>Celebritygraphixstudios Website</h3>
+                <img src="https://i.postimg.cc/Gpmzq8pt/Screenshot-2024-10-12-005224.png" alt="Celebritygraphixstudios Project">
+                <p>This website was developed for Celebrity Graphix as their official Website</p>
+                <a href="https://celebritygraphixstudios.site/">View Project</a>
+            </div>
+            <div class="grid-item">
+                <h3>Bijay Farms Website - coming soon....</h3>
+                <img src="" alt="BijayFarm Project">
+                <p>This website is developing for Animals Farming</p>
+                <a href="#">View Project</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Full Name">
+            <input type="email" placeholder="Email Address">
+            <input type="text" placeholder="Subject">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/+233545454000"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:ceo@kyekyeku-tech.site"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy;2024 Kyekyeku-Tech. All rights reserved.</p><a href="T&Cs.html" class="btm">Terms and Conditions</a></p>
+        </div>
+    </footer>
+<script>
+    function animateCounters() {
+    const counters = document.querySelectorAll('.prop-obj');
+    counters.forEach(counter => {
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText;
+
+        // Set increment value
+        const increment = target / 100;
+
+        // If the count is less than the target, keep incrementing
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 20); // Speed of the increment
+        } else {
+          counter.innerText = target; // When complete, set to the target value
+        }
+      };
+
+      // Initial call to start counting
+      updateCount();
+    });
+  }
+
+  // Trigger counters animation on page load
+  window.onload = function () {
+    animateCounters();
+  };
+document.querySelectorAll('nav ul li a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const section = document.querySelector(this.getAttribute('href'));
+        section.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+</script>
+</body>
+</html>

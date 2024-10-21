@@ -1,0 +1,280 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .title-section {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #080808;
+  }
+  
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+    margin: 10px auto;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 15px;
+  }
+  
+  .col-lg-auto {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+  }
+  
+  .card-pricing {
+    background-color: red;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.849);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+  .col-lg-auto:nth-child(4) .card-pricing,
+  .col-lg-auto:nth-child(5) .card-pricing {
+    background-color: #fccf06;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.849);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+  } 
+  .col-lg-auto:nth-child(1) .card-pricing {
+    background-color: #010111;
+    color: #f3f2f2;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.849);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s;
+  } 
+  .card-pricing:hover {
+    transform: translateY(-10px);
+  }
+  
+  .header {
+    padding: 20px;
+    color: #fff;
+    background-color: #007bff; /* Default header color */
+  }
+  
+  .header .price-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  /* Specific styling for MTN and AFA Registration headers */
+  .col-lg-auto:nth-child(4) .header,
+  .col-lg-auto:nth-child(5) .header {
+    background-color: #000;
+  }
+  .col-lg-auto:nth-child(1) .header {
+    background-color: rgb(0, 255, 98);
+  }
+  .price-icon img {
+    width: 100px;
+    margin: 0 auto;
+  }
+  
+  .price-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .body {
+    padding: 20px;
+  }
+  
+  .price-tag {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #f5f1f1;
+    margin-bottom: 10px;
+  }
+  
+  .price-info {
+    font-size: 1em;
+    color: #f5efef;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: red;
+    border: 1px solid #070707;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: red;
+    color: #fff;
+  }
+  .col-lg-auto:nth-child(4) .btn,
+  .col-lg-auto:nth-child(5) .btn {
+    color: black;
+    background-color: rgb(255, 174, 0);
+  }
+  .col-lg-auto:nth-child(4) .btn:hover,
+  .col-lg-auto:nth-child(5) .btn:hover {
+    color: rgb(243, 167, 3);
+    background-color: #0c0c01;
+  }
+  .col-lg-auto:nth-child(1) .btn {
+    color: rgb(8, 6, 1);
+    background-color: #eee8e8;
+  }
+  .col-lg-auto:nth-child(1) .p {
+    color: rgb(15, 12, 1);
+  }
+  .col-lg-auto:nth-child(1) .btn:hover {
+    color: rgba(241, 239, 245, 0.705);
+    background-color: rgba(8, 8, 70, 0.89);
+  }
+  /* Animations */
+  .wow {
+    visibility: hidden;
+  }
+  
+  .fadeInLeft {
+    animation-name: fadeInLeft;
+  }
+  
+  .fadeInUp {
+    animation-name: fadeInUp;
+  }
+  
+  @keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  /* Adding animation delays for staggered effect */
+  .col-lg-auto:nth-child(1) .wow {
+    animation-delay: 0.1s;
+  }
+  
+  .col-lg-auto:nth-child(2) .wow {
+    animation-delay: 0.3s;
+  }
+  
+  .col-lg-auto:nth-child(3) .wow {
+    animation-delay: 0.5s;
+  }
+  
+  .col-lg-auto:nth-child(4) .wow {
+    animation-delay: 0.7s;
+  }
+  
+  .wow {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    visibility: visible;
+  }
+  .whatsapp-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: transparent;
+    color: rgb(247, 244, 244);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.whatsapp-widget img {
+    width: 35px;
+    height: 35px;
+}
+
+.whatsapp-widget:hover {
+    transform: scale(1.2);
+}
+.btm {
+  color: #f82905;
+  
+}
+.btm:hover {
+  color: white;
+  background-color: red;
+}
+      
+      .footer {
+          padding: 20px;
+          width: 100%;
+          background-color: transparent;
+      }
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 0px;
+        text-align: center;
+        position: flex;
+        bottom: 0;
+        width: 100%;
+      }
+      .btm {
+          display: inline-block;
+          padding: 10px 20px;
+          font-size: 1em;
+          font-weight: bold;
+          color: red;
+          border: 1px solid #070707;
+          border-radius: 50px;
+          text-decoration: none;
+          transition: background-color 0.3s, color 0.3s;
+      }
+
+      .btm:hover {
+          background-color: red;
+          color: #fff;
+      }
